@@ -1,0 +1,114 @@
+{
+  "_help": "General information: header menu, contact details, location and footer.",
+  "header": {
+    "logo": "assets/seven-logo-horizontal.svg",
+    "nav": [
+      {
+        "label": "Home",
+        "link": "#home",
+        "visible": true
+      },
+      {
+        "label": "Our Story",
+        "link": "#our-story",
+        "visible": true
+      },
+      {
+        "label": "Our Menu",
+        "link": "menu.html",
+        "visible": true
+      },
+      {
+        "label": "Franchise",
+        "link": "#franchise",
+        "visible": true
+      },
+      {
+        "label": "Location",
+        "link": "#our-location",
+        "visible": true
+      }
+    ],
+    "desktopNav": [
+      {
+        "label": "Home",
+        "link": "#home",
+        "visible": true
+      },
+      {
+        "label": "Menu",
+        "link": "menu.html",
+        "visible": true
+      },
+      {
+        "label": "Our Story",
+        "link": "#our-story",
+        "visible": true
+      },
+      {
+        "label": "Contact",
+        "link": "#contact",
+        "visible": true
+      }
+    ]
+  },
+  "contact": {
+    "title": "CONTACT US",
+    "leadBold": "Got something to say? We’re listening.",
+    "lead": "Questions, feedback, collaborations, or business inquiries?\nReach out to us.",
+    "phone": "+964 770 152 5140",
+    "email": "info@sevenonly.com",
+    "findUsImage": "assets/find-us-on.svg"
+  },
+  "location": {
+    "title": "WHERE TO\nFIND US?",
+    "place": "Grand Boulevard - Nergis Park, Sulaymaniyah, Kurdistan Region, Iraq",
+    "mapsLink": "",
+    "zoom": 16,
+    "address": "Grand Boulevard – Nergis Park\nSulaymaniyah, Kurdistan Region",
+    "buttonText": "GET DIRECTIONS"
+  },
+  "footer": {
+    "logo": "assets/seven-logo-vertical-white.svg",
+    "links": [
+      {
+        "label": "Home",
+        "link": "#home",
+        "visible": true
+      },
+      {
+        "label": "Our Story",
+        "link": "#our-story",
+        "visible": true
+      },
+      {
+        "label": "Our Menu",
+        "link": "menu.html",
+        "visible": true
+      },
+      {
+        "label": "Contact Us",
+        "link": "#contact",
+        "visible": true
+      }
+    ],
+    "legal": [
+      {
+        "label": "Legal notices",
+        "link": "legal-notices.html",
+        "visible": true
+      },
+      {
+        "label": "Terms & Conditions",
+        "link": "terms.html",
+        "visible": true
+      },
+      {
+        "label": "Cookie policies",
+        "link": "cookies.html",
+        "visible": true
+      }
+    ],
+    "copyright": "©2026 | All rights reserved"
+  }
+}

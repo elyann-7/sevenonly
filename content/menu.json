@@ -1,0 +1,311 @@
+{
+  "_help": "The menu page. Items appear in the order listed here, inside the category whose id matches \"category\". Empty fields (price, image, ingredients) are simply not shown. available:false shows SOLD OUT.",
+  "products": {
+    "title": "OUR MENU",
+    "intro": "Smashed thin, seared hard, stacked high. Every SEVEN burger\nstarts with seven signature layers — see what's inside.",
+    "categories": [
+      {
+        "id": "beef",
+        "name": "Beef",
+        "layout": "cards",
+        "columns": 3,
+        "visible": true
+      },
+      {
+        "id": "chicken",
+        "name": "Chicken",
+        "layout": "cards",
+        "columns": 3,
+        "visible": true
+      },
+      {
+        "id": "sides",
+        "name": "Sides",
+        "layout": "cards",
+        "columns": 3,
+        "visible": true
+      },
+      {
+        "id": "sauces",
+        "name": "Sauces",
+        "layout": "cards",
+        "columns": 3,
+        "visible": true
+      },
+      {
+        "id": "desserts",
+        "name": "Desserts",
+        "layout": "cards",
+        "columns": 4,
+        "visible": true
+      }
+    ],
+    "items": [
+      {
+        "category": "beef",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "beef",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "beef",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "beef",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "beef",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "beef",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "chicken",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "chicken",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "chicken",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "sides",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "sides",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "sauces",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "sauces",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "sauces",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "desserts",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "desserts",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "desserts",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "desserts",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "desserts",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "desserts",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "desserts",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      },
+      {
+        "category": "desserts",
+        "name": "Item Name",
+        "tagline": "Short tagline.",
+        "description": "Short description of this item goes here.",
+        "ingredients": "",
+        "price": "",
+        "image": "",
+        "fit": "contain",
+        "available": true,
+        "visible": true
+      }
+    ],
+    "showIndex": false
+  }
+}

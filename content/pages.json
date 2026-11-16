@@ -1,0 +1,234 @@
+{
+  "_help": "Headings, text, buttons and pictures of each homepage section, in page order.",
+  "hero": {
+    "title": "I AM\nOBSESSED",
+    "video": "assets/hero-video-hd.mp4",
+    "poster": "",
+    "asideText": "",
+    "buttonText": "EXPLORE MENU",
+    "buttonLink": "menu.html"
+  },
+  "marquee": [
+    {
+      "text": "SMASHED TO ORDER",
+      "visible": true
+    },
+    {
+      "text": "BIG FLAVOR",
+      "visible": true
+    },
+    {
+      "text": "CRISPY EDGES",
+      "visible": true
+    },
+    {
+      "text": "SOFT BUNS",
+      "visible": true
+    },
+    {
+      "text": "HOUSE SAUCES",
+      "visible": true
+    }
+  ],
+  "story": {
+    "title": "OUR STORY",
+    "paragraphs": [
+      {
+        "text": "Seven started with a simple belief: if we wouldn’t serve it to our own family, we wouldn’t serve it to you.",
+        "visible": true
+      },
+      {
+        "text": "We created Seven for the people we care about most, our families, our friends, and our community. That belief shapes everything we do, from the ingredients we choose and the freshness of our food to the cleanliness of our kitchens and the way we welcome every guest.",
+        "visible": true
+      },
+      {
+        "text": "We obsess over the details because the details matter. Every meal is prepared with care, consistency, and uncompromising standards, the same way we would proudly serve it at our own table.",
+        "visible": true
+      },
+      {
+        "text": "But Seven was never meant to be just another burger place. We wanted to create a place people look forward to visiting, coming back to, and sharing with the people they love.",
+        "visible": true
+      },
+      {
+        "text": "That’s Seven. Crafted to Obsess.",
+        "visible": true
+      }
+    ],
+    "photos": [
+      {
+        "image": "assets/slider-01.jpg",
+        "alt": "SEVEN meal box, fries and chocolate cookie milkshake",
+        "fit": "cover",
+        "visible": true
+      },
+      {
+        "image": "assets/hero-burger.webp",
+        "alt": "SEVEN smash burger",
+        "fit": "cover",
+        "visible": true
+      },
+      {
+        "image": "assets/slider-02.jpg",
+        "alt": "SEVEN smash burger and cold drink",
+        "fit": "cover",
+        "visible": true
+      },
+      {
+        "image": "assets/exploded-burger.webp",
+        "alt": "Every layer of the SEVEN burger",
+        "fit": "contain",
+        "visible": true
+      }
+    ]
+  },
+  "menuTeaser": {
+    "title": "OUR MENU",
+    "text": "Smashed thin, seared hard, stacked high. Every SEVEN burger\nstarts with seven signature layers — see what's inside.",
+    "buttonText": "EXPLORE MENU",
+    "buttonLink": "menu.html",
+    "layers": [
+      {
+        "image": "assets/top-bun.webp",
+        "label": "Glossy Potato Bun",
+        "alt": "Glossy top potato bun"
+      },
+      {
+        "image": "assets/sauce.webp",
+        "label": "Signature SEVEN Sauce",
+        "alt": "Signature SEVEN sauce"
+      },
+      {
+        "image": "assets/cheese.webp",
+        "label": "Melted Cheddar",
+        "alt": "Melted cheddar cheese"
+      },
+      {
+        "image": "assets/patty.webp?v=29",
+        "label": "Smashed Beef Patty",
+        "alt": "Smashed beef patty with crispy edges"
+      },
+      {
+        "image": "assets/bottom-bun.webp",
+        "label": "Toasted Potato Bun",
+        "alt": "Toasted bottom potato bun"
+      }
+    ]
+  },
+  "bestSellers": {
+    "title": "BEST SELLER",
+    "intro": "",
+    "buttonText": "VIEW FULL MENU",
+    "buttonLink": "menu.html",
+    "items": [
+      {
+        "name": "THE TRUFFLE SMASH",
+        "image": "assets/best-seller-burger.webp",
+        "description": "",
+        "price": "",
+        "link": "",
+        "visible": true
+      },
+      {
+        "name": "THE BBQ SMASH",
+        "image": "assets/best-seller-burger.webp",
+        "description": "",
+        "price": "",
+        "link": "",
+        "visible": true
+      },
+      {
+        "name": "THE CLASSIC SMASH",
+        "image": "assets/best-seller-burger.webp",
+        "description": "",
+        "price": "",
+        "link": "",
+        "visible": true
+      }
+    ]
+  },
+  "partners": {
+    "title": "OUR PARTNERS",
+    "text": "We carefully select partners who share our commitment to quality, consistency, and uncompromising standards. From ingredients to operations, we work with trusted partners who meet the high standards behind every Seven experience.",
+    "logos": [
+      {
+        "name": "Coca-Cola",
+        "image": "assets/coca-cola-logo.webp",
+        "link": "",
+        "style": "coke",
+        "visible": true
+      },
+      {
+        "name": "Martin's",
+        "image": "assets/martins-logo.webp",
+        "link": "",
+        "style": "martins",
+        "visible": true
+      }
+    ]
+  },
+  "franchise": {
+    "title": "FRANCHISE",
+    "subtitle": "Bring Seven to Your City",
+    "text": "Seven is built with a clear vision for growth, supported by strong standards, consistent operations, and an uncompromising approach to quality. As we expand into new markets, we are open to working with selected partners who share our vision and standards.",
+    "buttonText": "franchise@sevenonly.com",
+    "buttonLink": "mailto:franchise@sevenonly.com",
+    "phoneLabel": "Send your inquiries"
+  },
+  "playlist": {
+    "title": "PLAYLIST",
+    "lead": "At Seven, the experience is as much about the music as it is about the food.",
+    "copy": "Every song sets the mood, bringing the same energy, rhythm, and\nspirit that make Seven smash burger unforgettable.",
+    "showCaption": false,
+    "showPlayButton": true,
+    "items": [
+      {
+        "title": "SEVEN SELECTED",
+        "artist": "Placeholder playlist",
+        "link": "",
+        "cover": "",
+        "visible": true
+      },
+      {
+        "title": "LATE NIGHT",
+        "artist": "Placeholder playlist",
+        "link": "",
+        "cover": "",
+        "visible": true
+      },
+      {
+        "title": "SMASH HITS",
+        "artist": "Placeholder playlist",
+        "link": "",
+        "cover": "",
+        "visible": true
+      },
+      {
+        "title": "GOOD VIBES",
+        "artist": "Placeholder playlist",
+        "link": "",
+        "cover": "",
+        "visible": true
+      },
+      {
+        "title": "BIG FLAVOR",
+        "artist": "Placeholder playlist",
+        "link": "",
+        "cover": "",
+        "visible": true
+      },
+      {
+        "title": "ON REPEAT",
+        "artist": "Placeholder playlist",
+        "link": "",
+        "cover": "",
+        "visible": true
+      }
+    ]
+  },
+  "instagram": {
+    "title": "INSTAGRAM FEED",
+    "note": "Follow the flavor. Find us on Instagram.",
+    "buttonText": "@SEVEN.IRAQ",
+    "buttonLink": "https://www.instagram.com/seven.iraq/"
+  }
+}

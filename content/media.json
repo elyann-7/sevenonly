@@ -1,0 +1,34 @@
+{
+  "_help": "Photos for the homepage photo slider and the hand-picked Instagram posts (used when the automatic Instagram feed is off or not set up).",
+  "gallery": {
+    "delay": 2000,
+    "slides": [
+      {
+        "image": "assets/slider-01.jpg",
+        "alt": "SEVEN meal box, fries and chocolate cookie milkshake",
+        "visible": true
+      },
+      {
+        "image": "assets/slider-02.jpg",
+        "alt": "SEVEN smash burger and cold drink served on a red table",
+        "visible": true
+      }
+    ]
+  },
+  "instagramPosts": [
+    {
+      "id": "ig-1",
+      "image": "assets/instagram-post-1.jpg",
+      "url": "https://www.instagram.com/p/DfCToMus_LJ/",
+      "alt": "SEVEN Instagram post — wrapped burger",
+      "visible": true
+    },
+    {
+      "id": "ig-2",
+      "image": "assets/instagram-post-2.jpg",
+      "url": "https://www.instagram.com/p/DfCTkm9MIEc/",
+      "alt": "SEVEN Instagram post — cold drink",
+      "visible": true
+    }
+  ]
+}

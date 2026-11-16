@@ -1,0 +1,77 @@
+{
+  "_help": "Homepage section order & visibility, design effects, Instagram feed mode and the GitHub repository the admin page saves to.",
+  "sections": [
+    {
+      "id": "hero",
+      "label": "Hero video",
+      "visible": true
+    },
+    {
+      "id": "gallery",
+      "label": "Marquee & photo slider",
+      "visible": true
+    },
+    {
+      "id": "our-story",
+      "label": "Our Story",
+      "visible": true
+    },
+    {
+      "id": "our-menu",
+      "label": "Our Menu (burger layers)",
+      "visible": true
+    },
+    {
+      "id": "best-sellers",
+      "label": "Best Seller",
+      "visible": true
+    },
+    {
+      "id": "partners",
+      "label": "Our Partners",
+      "visible": true
+    },
+    {
+      "id": "franchise",
+      "label": "Franchise",
+      "visible": true
+    },
+    {
+      "id": "our-location",
+      "label": "Location",
+      "visible": true
+    },
+    {
+      "id": "playlist",
+      "label": "Playlist",
+      "visible": false
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram Feed",
+      "visible": true
+    },
+    {
+      "id": "contact",
+      "label": "Contact Us",
+      "visible": true
+    }
+  ],
+  "design": {
+    "reveal": "all",
+    "magnetic": "wide",
+    "parallax": "all",
+    "progressLine": "all",
+    "grain": "all",
+    "menuFooter": "Seven"
+  },
+  "instagramFeed": {
+    "mode": "auto",
+    "maxPosts": 12
+  },
+  "github": {
+    "owner": "",
+    "repo": "",
+    "branch": "main"
+  }
+}

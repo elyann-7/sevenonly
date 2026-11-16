@@ -1,0 +1,77 @@
+# SEVEN — publish the website to GitHub Pages.
+# Runs on every push to main, every 6 hours (fresh Instagram posts), and by hand
+# (Actions tab → "Publish website" → Run workflow).
+# Settings → Pages → Source must be "GitHub Actions".
+name: Publish website
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 */6 * * *'   # refresh the Instagram feed
+    - cron: '41 3 * * 1'     # Mondays: also renew the Instagram token
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check the content files
+        run: node tools/check-content.mjs
+
+      - name: Prepare the website folder
+        run: |
+          mkdir _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'tools' --exclude 'GUIDES' --exclude 'README.md' ./ _site/
+
+      - name: Instagram feed (only if the INSTAGRAM_ACCESS_TOKEN secret exists)
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_REFRESH: ${{ github.event.schedule == '41 3 * * 1' && '1' || '0' }}
+        run: node tools/instagram-sync.mjs _site
+
+      - name: Save the renewed Instagram token (only if SECRETS_ADMIN_TOKEN exists)
+        if: github.event.schedule == '41 3 * * 1'
+        env:
+          GH_TOKEN: ${{ secrets.SECRETS_ADMIN_TOKEN }}
+        run: |
+          if [ -n "$GH_TOKEN" ] && [ -s "$RUNNER_TEMP/ig-token" ]; then
+            gh secret set INSTAGRAM_ACCESS_TOKEN --repo "$GITHUB_REPOSITORY" < "$RUNNER_TEMP/ig-token" && echo "Instagram token renewed for 60 days."
+          else
+            echo "Token renewal not stored (no SECRETS_ADMIN_TOKEN secret). Replace INSTAGRAM_ACCESS_TOKEN by hand before it expires."
+          fi
+          rm -f "$RUNNER_TEMP/ig-token"
+
+      - name: Bundle the content (for pages opened from a folder)
+        run: node tools/build-bundle.mjs _site
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

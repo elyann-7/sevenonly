@@ -1,0 +1,31 @@
+/* ==========================================================================
+   SEVEN — MOBILE DESIGN  (phones, narrower than 768px)
+   --------------------------------------------------------------------------
+   This file is switched on ONLY for mobile screens (see screens/screens.js),
+   so nothing here affects any other screen type.
+
+   Status: waiting for the mobile design reference. Until then this screen
+   uses the shared base design in style.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Burger ingredients on phones = the laptop component, scaled down:
+   same layers, same order, same names on the right with the same thin rules.
+   As the burger scrolls through the screen its layers separate and the names
+   fade in (no pinning on phones, so it works on any screen height).
+   Burger + name column are centred together; the burger is sized by the
+   screen WIDTH only, so it is never shrunk by a short screen.
+   script.js measures each name and spaces them so they never touch.
+   -------------------------------------------------------------------------- */
+.burger-story__stage {
+  --label-gap: 8px;
+  --label-line: 12px;
+  --label-w: clamp(86px, 27vw, 128px);
+  --burger-w: min(calc(100vw - 32px - var(--label-gap) - var(--label-line) - 10px - var(--label-w)), 300px);
+  flex: none;
+  margin: clamp(24px, 6vw, 36px) auto 0;
+  left: calc((var(--label-gap) + var(--label-line) + 10px + var(--label-w)) / -2);
+}
+.burger-story__piece::before,
+.burger-story__piece::after { display: block; top: calc(50% + var(--label-dy, 0px)); }
+.burger-story__piece::after { font-size: 11.5px; line-height: 1.25; }

@@ -1,0 +1,42 @@
+/* ==========================================================================
+   SEVEN — LARGE DESIGN  (large desktop monitors, 1920px and wider)
+   --------------------------------------------------------------------------
+   This file is switched on ONLY for large screens (see screens/screens.js),
+   so nothing here affects any other screen type.
+
+   Status: waiting for the large design reference. Until then this screen
+   uses the shared base design in style.css.
+   ========================================================================== */
+
+/* Large desktop (1920px+): same wide composition as desktop, with a larger
+   type scale and roomier controls so nothing looks small on big monitors. */
+:root {
+  --wide-body: clamp(1.25rem, .78vw, 1.6rem);
+  --wide-h2: clamp(8rem, 6.4vw, 12rem);
+  --wide-gutter: clamp(96px, 5vw, 180px);
+}
+.header-nav a { font-size: clamp(1.25rem, .85vw, 1.6rem); }
+.hero-text h1 { font-size: clamp(12rem, 9.4vw, 18rem); }
+.hero-aside { max-width: 480px; }
+.hero-aside__text { font-size: clamp(1.45rem, .95vw, 1.9rem); }
+.hero-aside__button, .best-sellers__button, .location__button, .burger-story__button,
+.franchise__button, .instagram-feed__button { min-height: 64px; padding: 0 44px; font-size: 1.3rem; }
+.story-strip__photo { height: clamp(620px, 66vh, 980px); }
+.best-sellers__card h3 { font-size: clamp(2.2rem, 1.5vw, 3rem); }
+.franchise h3, .location__address, .playlist__lead, .contact__lead { font-size: clamp(1.6rem, 1.05vw, 2.1rem); }
+.contact__details { font-size: clamp(1.7rem, 1.1vw, 2.2rem); }
+.contact__find-us-art { height: clamp(84px, 4.2vw, 120px); }
+.contact__social-links a { width: 60px; height: 60px; border-radius: 12px; }
+.contact__social-links svg { width: 32px; height: 32px; }
+.site-footer__nav, .site-footer__legal { font-size: clamp(1.25rem, .8vw, 1.6rem); }
+.playlist__card { --card-w: clamp(230px, 11vw, 320px); }
+.menu-card h2 { font-size: clamp(3rem, 2.2vw, 4rem); }
+.menu-card > p:last-child { font-size: clamp(1.1rem, .75vw, 1.4rem); }
+
+/* Our Menu burger (large desktop only): the biggest version — about 540–660px
+   wide, filling most of the right half while leaving clean space around it.
+   Still capped by the visible height so it is never cut off. */
+.burger-story__stage {
+  --burger-w: min(clamp(540px, 30vw, 660px), calc((100vh - var(--header-height) - 80px) / var(--burger-ratio)));
+  --label-w: clamp(170px, 9vw, 230px);
+}

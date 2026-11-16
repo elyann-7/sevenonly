@@ -1,0 +1,37 @@
+{
+  "_help": "Every social button on the website comes from this file, in this order. Paste the real account address in \"link\". An icon with \"visible\": true but no link still shows (as on the original design) but does nothing when tapped. To hide one, set \"visible\" to false. Platforms with icons: instagram, facebook, tiktok, whatsapp, youtube, snapchat, x, link.",
+  "handle": "@seven.iraq",
+  "handleLink": "https://www.instagram.com/seven.iraq/",
+  "links": [
+    {
+      "platform": "instagram",
+      "link": "https://www.instagram.com/seven.iraq/",
+      "visible": true
+    },
+    {
+      "platform": "facebook",
+      "link": "https://www.facebook.com/seven.iraq",
+      "visible": true
+    },
+    {
+      "platform": "tiktok",
+      "link": "https://www.tiktok.com/@seven.iraq",
+      "visible": true
+    },
+    {
+      "platform": "youtube",
+      "link": "https://www.youtube.com/@seven.iraq",
+      "visible": true
+    },
+    {
+      "platform": "whatsapp",
+      "link": "https://wa.me/9647701525140",
+      "visible": false
+    },
+    {
+      "platform": "snapchat",
+      "link": "",
+      "visible": false
+    }
+  ]
+}
