@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; font-src 'self'; connect-src 'self' https://api.github.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>SEVEN - Admin</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="dashboard.css?v=81">
+</head>
+<body class="dashboard-page">
+  <!-- ============ Connect to GitHub ============ -->
+  <main class="auth-card" id="connect-view" hidden>
+    <p class="dashboard-brand">SEVEN</p>
+    <h1>CONNECT</h1>
+    <p class="hint">This admin saves your changes straight into the website's GitHub repository. Paste a <strong>fine-grained personal access token</strong> for the repository (how to make one: <code>GUIDES/EDITING-GUIDE.md</code> → “Admin page”). Nobody can change anything without it.</p>
+    <form class="auth-form" id="connect-form" autocomplete="off">
+      <label for="token">GitHub token</label>
+      <input id="token" name="token" type="password" required spellcheck="false" placeholder="github_pat_…">
+      <label for="owner">GitHub account (owner)</label>
+      <input id="owner" name="owner" required spellcheck="false" placeholder="your-github-username">
+      <label for="repo">Repository name</label>
+      <input id="repo" name="repo" required spellcheck="false" placeholder="seven-website">
+      <label for="branch">Branch</label>
+      <input id="branch" name="branch" required spellcheck="false" value="main">
+      <label class="check-field" for="remember"><input id="remember" name="remember" type="checkbox"> Remember on this device (only on your own computer/phone)</label>
+      <button type="submit" class="save-button">CONNECT</button>
+      <p class="hint form-error-text" id="connect-message" role="status"></p>
+    </form>
+    <p class="hint auth-back"><a href="index.html">← Back to the website</a></p>
+  </main>
+
+  <!-- ============ Editor ============ -->
+  <div id="editor-view" hidden>
+  <header class="dashboard-header">
+    <a href="index.html" class="dashboard-brand" target="_blank" rel="noopener">SEVEN</a>
+    <span class="save-status" id="save-status" role="status">Loading…</span>
+    <button type="button" class="header-save" id="save-button" disabled>SAVE</button>
+    <nav class="header-links" aria-label="Preview">
+      <a href="index.html?preview=1" target="_blank" rel="noopener" class="preview-link" id="preview-link" title="Shows your unsaved changes (only you see them)">PREVIEW ↗</a>
+      <a href="preview.html?preview=1" target="_blank" rel="noopener" class="preview-link">ALL SCREENS ↗</a>
+      <a href="index.html" target="_blank" rel="noopener" class="preview-link">LIVE SITE ↗</a>
+    </nav>
+  </header>
+  <main class="dashboard-main">
+    <p class="eyebrow">WEBSITE ADMIN · <span id="connected-as"></span></p>
+    <h1>EDIT SEVEN</h1>
+    <p class="intro">Edit any text, image, video, link, menu item, social link or Instagram post. Add, remove, reorder (arrows or drag) and hide items. Press <strong>SAVE</strong> (top right, or Ctrl/⌘ + S): your changes are saved to GitHub and the live website updates in about 1–2 minutes. <strong>PREVIEW</strong> shows unsaved changes to you only.</p>
+
+    <section class="publish-box" aria-labelledby="publish-title">
+      <h2 id="publish-title">Save &amp; publish</h2>
+      <p class="hint publish-lead">Your changes stay in this page until you save. Photos and videos you upload go straight into the repository (assets/uploads).</p>
+      <div class="publish-actions">
+        <button type="button" class="save-button" id="publish-button" disabled>SAVE &amp; PUBLISH</button>
+        <button type="button" class="reset-button" id="reset-button" disabled>DISCARD UNSAVED CHANGES</button>
+      </div>
+      <p class="hint" id="publish-message" role="status"></p>
+      <p class="hint" id="deploy-status" role="status"></p>
+    </section>
+
+    <nav class="editor-toc" aria-label="Dashboard sections" id="editor-toc"></nav>
+    <div id="editor"></div>
+
+    <section class="editor-section tools-box" aria-labelledby="tools-title">
+      <h2 id="tools-title">Versions, backup &amp; account</h2>
+      <div class="tool">
+        <h3>Version history</h3>
+        <p class="hint">Every save is a version on GitHub (the last 30 are listed). Restore one to put the content back the way it was — the restore is saved as a new version, so you can always undo it.</p>
+        <ol class="revision-list" id="revision-list"><li class="hint">Loading…</li></ol>
+      </div>
+      <div class="tool">
+        <h3>Backup &amp; import</h3>
+        <p class="hint">Download a backup of all content files. Import loads a backup into the editor; press SAVE to publish it.</p>
+        <div class="publish-actions">
+          <button type="button" class="reset-button" id="export-button">DOWNLOAD BACKUP</button>
+          <button type="button" class="reset-button" id="import-button">IMPORT A BACKUP</button>
+          <input type="file" id="import-file" accept=".json,.js" hidden>
+        </div>
+      </div>
+      <div class="tool">
+        <h3>Disconnect</h3>
+        <p class="hint">Removes the GitHub token from this browser. To block a token everywhere, delete it on github.com → Settings → Developer settings → Personal access tokens.</p>
+        <button type="button" class="reset-button" id="logout-button">DISCONNECT</button>
+      </div>
+    </section>
+  </main>
+  </div>
+  <script src="content/content-bundle.js?v=81"></script>
+  <script src="site-config.js?v=81"></script>
+  <script src="admin.js?v=81"></script>
+</body>
+</html>

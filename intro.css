@@ -1,0 +1,32 @@
+/* ==========================================================================
+   SEVEN — loading intro (index.html)
+   The seven tall red lines of the Seven main logo rise one at a time (each from bottom to
+   top, left to right) while the percentage underneath counts 0% → 100% in step.
+   Fast internet: under 3s. Slow internet: the counter follows the real loading and
+   waits near the end until the site is ready. Then a soft .6s fade into the website.
+   Reduced motion: the complete lines, then the website. Failsafe: hides itself after 22s.
+   ========================================================================== */
+html.intro-lock, html.intro-lock body { overflow: hidden; }
+#intro {
+  position: fixed; inset: 0; z-index: 1000;
+  display: grid; place-items: center;
+  background: #f3f1ec;
+  animation: intro-failsafe 0s linear 22s forwards;
+}
+#intro.is-leaving { opacity: 0; pointer-events: none; transition: opacity .6s ease; }
+#intro.is-out { opacity: 0; visibility: hidden; pointer-events: none; }
+@keyframes intro-failsafe { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+
+/* Clean space under the symbol before the counter: about ½ of its size (guideline minimum). */
+.intro__stage { display: flex; flex-direction: column; align-items: center; gap: min(16vw, 66px); }
+/* Symbol built to the guideline: line = X, gap = ½X, symbol = 10X × 10X (square). */
+.intro__logo { display: block; width: min(32vw, 132px); height: auto; overflow: visible; }
+.intro__bar { fill: #C1121F; transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(0); will-change: transform; }
+.intro__num {
+  min-width: 5ch; text-align: center;
+  font: 300 14px/1 Inter, 'Helvetica Neue', Arial, sans-serif; letter-spacing: .3em; text-indent: .3em;
+  font-variant-numeric: tabular-nums; color: #414042;
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro__bar { transform: none; }
+}

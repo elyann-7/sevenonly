@@ -1,0 +1,1549 @@
+/* SEVEN brand typefaces - supplied in the visual-style guideline. */
+@font-face { font-family: 'Druk Text'; src: url('assets/fonts/DrukText-Medium-Trial.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Druk Text'; src: url('assets/fonts/DrukText-Bold-Trial.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Druk Text'; src: url('assets/fonts/DrukText-Heavy-Trial.otf') format('opentype'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Druk Text'; src: url('assets/fonts/DrukText-Super-Trial.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-Thin.ttf') format('truetype'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Signatoria'; src: url('assets/fonts/SIGNATORIA.OTF') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Signatoria'; src: url('assets/fonts/SIGNATORIABOLD.OTF') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+
+:root {
+  --seven-red: #b71923;
+  --header-height: clamp(82px, 14vw, 108px);
+  /* Consistent top/bottom rhythm shared by every full-width content section. */
+  --section-pad-y: clamp(56px, 8vw, 100px);
+  /* Very light, elegant gray used to alternate with white section backgrounds. */
+  --section-alt-bg: #f6f5f2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: #fff;
+  color: #000;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+.page-shell {
+  min-height: 100svh;
+  padding-top: var(--header-height);
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: 0 clamp(24px, 7vw, 70px);
+  background: #fff;
+}
+
+#logo {
+  display: block;
+  width: clamp(145px, 39vw, 235px);
+  height: auto;
+}
+
+#menu-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--seven-red);
+}
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  background: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: opacity 220ms ease, transform 300ms ease, visibility 300ms;
+}
+
+.menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+#close-menu {
+  position: absolute;
+  top: max(18px, env(safe-area-inset-top));
+  right: clamp(22px, 6vw, 64px);
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: transparent;
+  color: #171717;
+  font-family: Arial, sans-serif;
+  font-size: 2.45rem;
+  font-weight: 200;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.menu ul {
+  margin-top: clamp(20px, 7vh, 58px);
+  list-style: none;
+  text-align: center;
+}
+
+.menu li + li {
+  margin-top: clamp(20px, 4.5vh, 35px);
+}
+
+.menu a {
+  color: #171717;
+  font-family: Inter, Arial, sans-serif;
+  font-size: clamp(1.12rem, 4.4vw, 1.7rem);
+  font-weight: 400;
+  letter-spacing: -.035em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  color: var(--seven-red);
+}
+
+.menu a[href="menu.html"] {
+  border-bottom: 1px solid var(--seven-red);
+  padding-bottom: 4px;
+}
+
+.menu__seven-bars {
+  display: flex;
+  gap: 3px;
+  height: 18px;
+  margin-top: clamp(42px, 8vh, 72px);
+}
+
+.menu__seven-bars i {
+  display: block;
+  width: 3px;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--seven-red);
+}
+
+.hero {
+  position: relative;
+  height: calc(100svh - var(--header-height));
+  min-height: 520px;
+  overflow: hidden;
+  background: #111;
+}
+
+.hero :is(video, .hero__canvas, .hero__poster) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.18);
+  transform-origin: center;
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.58));
+  pointer-events: none;
+}
+
+.hero-text {
+  position: absolute;
+  left: clamp(26px, 7vw, 90px);
+  bottom: clamp(28px, 7vh, 72px);
+  color: #fff;
+}
+
+.hero-text h1 {
+  font-family: Anton, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: clamp(4rem, 16vw, 10rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.brand-showcase {
+  background: #fff;
+}
+
+.brand-marquee {
+  width: 100%;
+  overflow: hidden;
+  padding: 24px 0;
+  background: #fff;
+}
+
+.brand-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 26s linear infinite;
+  will-change: transform;
+}
+
+.brand-marquee__group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: clamp(20px, 5vw, 52px);
+  padding-right: clamp(20px, 5vw, 52px);
+  color: #3f3f3f;
+  font-family: Anton, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: clamp(0.46rem, 1.1vw, 0.7rem);
+  font-weight: 400;
+  letter-spacing: 0.19em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.brand-bars {
+  display: inline-block;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 8px;
+  background: url('assets/four-bars.svg') center / 18px 8px no-repeat;
+}
+
+.brand-bars i {
+  display: none;
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.gallery {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #111;
+}
+
+.gallery__track {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.gallery__track::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery__track.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.gallery__slide {
+  flex: 0 0 100%;
+  height: clamp(560px, 82svh, 860px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.gallery__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.gallery__slide--placeholder {
+  display: grid;
+  place-items: center;
+  background: #efefef;
+  color: #777;
+  font-family: Anton, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: clamp(1rem, 4vw, 1.75rem);
+  letter-spacing: 0.16em;
+  text-align: center;
+}
+
+.gallery__shade {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 17%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.38));
+  pointer-events: none;
+}
+
+.gallery__dots {
+  position: absolute;
+  bottom: max(22px, env(safe-area-inset-bottom));
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transform: translateX(-50%);
+}
+
+.gallery__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.38);
+  cursor: pointer;
+  transition: width 180ms ease, background-color 180ms ease;
+}
+
+.gallery__dot.is-active {
+  width: 20px;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.our-story {
+  min-height: 670px;
+  padding: var(--section-pad-y) clamp(38px, 9.5vw, 120px);
+  background: #171717;
+  color: #fff;
+}
+
+.our-story__inner {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.our-story h2 {
+  font-family: Anton, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: clamp(2.65rem, 10.5vw, 6.5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.our-story__copy {
+  margin-top: clamp(100px, 23vw, 170px);
+  font-size: clamp(0.74rem, 2.65vw, 1.08rem);
+  font-weight: 400;
+  line-height: 1.24;
+}
+
+.our-story__copy p + p {
+  margin-top: 1.35em;
+}
+
+/* Best sellers: simple static layout, no scroll-driven slider on any screen size. */
+.best-sellers{background:#fff;color:#161616}
+.best-sellers__sticky{display:flex;flex-direction:column;align-items:center;padding:var(--section-pad-y) 20px}
+.best-sellers h2,.best-sellers h3{font-family:Anton,Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-weight:400;text-transform:uppercase}
+.best-sellers h2{font-size:clamp(3.3rem,13vw,7.2rem);letter-spacing:.005em;line-height:.9;text-align:center}
+.best-sellers__cards{display:grid;grid-template-columns:1fr;gap:40px;width:min(100%,520px);margin:clamp(35px,8vh,60px) auto 0}
+.best-sellers__card{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.best-sellers__card img{display:block;width:min(90%,430px);max-height:320px;object-fit:contain;filter:drop-shadow(0 14px 12px rgba(0,0,0,.1))}
+.best-sellers__card h3{margin-top:16px;font-size:clamp(1.35rem,5.3vw,2.1rem);line-height:1;letter-spacing:-.015em;text-align:center}
+@media(min-width:768px){.best-sellers__sticky{padding:var(--section-pad-y) 7vw}.best-sellers__cards{grid-template-columns:repeat(3,1fr);gap:20px;width:min(100%,1100px);margin-top:60px}.best-sellers__card img{width:100%;max-height:340px}}
+
+.partners{background:var(--section-alt-bg);color:#1b1b1b;padding:var(--section-pad-y) 24px}
+.partners__inner{width:100%;max-width:850px;margin:0 auto;text-align:center}
+.partners h2{font-family:Anton,Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:clamp(3.1rem,11vw,6rem);font-weight:400;letter-spacing:.005em;line-height:.92}
+.partners p{max-width:590px;margin:24px auto 0;font-size:clamp(1rem,3.9vw,1.22rem);line-height:1.22}
+.partners__logos{display:flex;align-items:center;justify-content:center;gap:clamp(30px,8vw,100px);margin-top:clamp(68px,13vw,120px)}
+.partners__logo{display:block;width:clamp(125px,32vw,230px);height:85px;object-fit:contain}.partners__logo--martins{width:clamp(115px,30vw,215px)}
+.menu-page{position:relative;min-height:100svh;padding:clamp(88px,13vw,150px) 24px clamp(72px,12vw,120px);background:#fff;color:#191919;font-family:Inter,Arial,sans-serif}.menu-page__back{position:absolute;top:28px;left:24px;color:#191919;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.08em;text-decoration:none}.menu-page__back:hover,.menu-page__back:focus-visible{color:var(--seven-red)}.menu-page__heading{max-width:780px;margin:0 auto;text-align:center}.menu-page h1{margin:0;font-family:Anton,Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:clamp(4.2rem,11vw,8.5rem);font-weight:400;line-height:.9;letter-spacing:-.02em}.menu-page__heading p{margin:clamp(22px,3vw,32px) 0 0;font-family:Inter,Arial,sans-serif;font-size:clamp(1rem,2vw,1.3rem);font-weight:500;letter-spacing:-.025em;line-height:1.18}.menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,4vw,46px);width:min(100%,900px);margin:clamp(60px,10vw,105px) auto 0}.menu-card{position:relative;display:flex;min-height:clamp(405px,53vw,565px);flex-direction:column;padding:clamp(18px,2.5vw,27px);background:#f5f5f5;transition:transform 220ms ease}.menu-card__media{flex:1;min-height:clamp(210px,29vw,320px);margin:0;background:transparent;transition:transform 220ms ease}.menu-card h2{margin:clamp(8px,2vw,18px) 0 0;color:var(--seven-red);font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:clamp(2rem,4.15vw,3.25rem);font-weight:700;letter-spacing:-.03em;line-height:.9}.menu-card>p:last-child{max-width:270px;margin:clamp(20px,3vw,28px) 0 0;color:#454545;font-family:Inter,Arial,sans-serif;font-size:clamp(.74rem,1.3vw,.93rem);font-weight:500;letter-spacing:-.03em;line-height:1.15}@media(hover:hover){.menu-card:hover{transform:translateY(-4px)}.menu-card:hover .menu-card__media{transform:scale(1.015)}}@media(max-width:600px){.menu-page{padding-right:16px;padding-left:16px}.menu-page__heading p{font-size:.95rem}.menu-grid{gap:12px;margin-top:52px}.menu-card{min-height:350px;padding:13px}.menu-card h2{font-size:clamp(1.65rem,7.4vw,2.2rem)}.menu-card__media{min-height:180px}.menu-card>p:last-child{margin-top:18px;font-size:.7rem}}
+
+/* Franchise section */
+.franchise{display:grid;place-items:center;padding:var(--section-pad-y) 24px;background:#fff;color:#191919;scroll-margin-top:var(--header-height)}
+.franchise__content{width:min(100%,690px);text-align:center}
+.franchise__eyebrow{margin-bottom:clamp(17px,3vw,28px);color:var(--seven-red);font-size:clamp(.63rem,1.4vw,.78rem);font-weight:700;letter-spacing:.16em}
+.franchise h2{font-family:Anton,Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:clamp(4.2rem,13vw,8.5rem);font-weight:400;line-height:.84;letter-spacing:-.025em}
+.franchise h3{margin-top:clamp(20px,3vw,32px);font-size:clamp(1rem,2.1vw,1.32rem);font-weight:700;letter-spacing:-.03em}
+.franchise__copy{max-width:590px;margin:clamp(12px,2vw,18px) auto 0;font-size:clamp(.94rem,2.25vw,1.14rem);line-height:1.25}
+.franchise__button{display:flex;align-items:center;justify-content:center;min-height:45px;max-width:590px;margin:clamp(50px,8vw,82px) auto 0;padding:12px 22px;border-radius:999px;background:#191919;color:#fff;font-family:Anton,Impact,sans-serif;font-size:clamp(.68rem,1.7vw,.92rem);font-weight:400;letter-spacing:.02em;line-height:1.05;text-decoration:none}
+.franchise__button:hover,.franchise__button:focus-visible{background:var(--seven-red)}
+
+/* Location section: map area stays as a placeholder until the live map URL is supplied. */
+.location{padding:var(--section-pad-y) 24px;background:var(--section-alt-bg);color:#191919;scroll-margin-top:var(--header-height)}
+.location__inner{width:100%;max-width:820px;margin:0 auto;text-align:center}
+.location h2{font-family:Anton,Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:clamp(3.7rem,12.5vw,7rem);font-weight:400;line-height:1.04;letter-spacing:-.025em}
+.location__map{position:relative;width:min(100%,590px);height:clamp(265px,47vw,400px);margin:clamp(45px,9vw,84px) auto 0;overflow:hidden;background:#eceeed;background-image:linear-gradient(30deg,transparent 49%,rgba(255,255,255,.95) 50%,rgba(255,255,255,.95) 52%,transparent 53%),linear-gradient(123deg,transparent 49%,rgba(255,255,255,.9) 50%,rgba(255,255,255,.9) 52%,transparent 53%),linear-gradient(75deg,transparent 49%,rgba(255,255,255,.86) 50%,rgba(255,255,255,.86) 52%,transparent 53%)}
+.location__road{position:absolute;height:7px;border-radius:999px;background:rgba(255,255,255,.95);box-shadow:0 1px 0 rgba(205,209,208,.5)}
+.location__road--one{top:22%;left:-8%;width:120%;transform:rotate(15deg)}.location__road--two{top:62%;left:-14%;width:132%;transform:rotate(-22deg)}.location__road--three{top:49%;left:5%;width:94%;transform:rotate(68deg)}.location__road--four{top:18%;left:31%;width:67%;transform:rotate(96deg)}
+.location__pin{position:absolute;width:25px;height:25px;border-radius:50% 50% 50% 0;background:var(--seven-red);transform:rotate(-45deg);filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}.location__pin::after{content:"";position:absolute;top:8px;left:8px;width:9px;height:9px;border-radius:50%;background:#fff}
+.location__pin--one{top:14%;left:35%}.location__pin--two{top:47%;left:26%}.location__pin--three{top:44%;left:62%}.location__pin--four{top:69%;left:78%}
+.location__map-label{position:absolute;right:14px;bottom:12px;color:#777;font-size:.55rem;font-weight:700;letter-spacing:.13em;line-height:1.35;text-align:right}
+.location__marquee{margin-top:clamp(56px,10vw,92px)}
+
+/* Playlist carousel: each album and URL is editable in script.js. */
+.playlist{padding:var(--section-pad-y) 0;overflow:hidden;background:#202020;color:#f4f4f4;text-align:center}
+.playlist__inner{width:100%;margin:0 auto}
+.playlist h2{font-family:Anton,Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:clamp(3.7rem,12.5vw,7rem);font-weight:400;line-height:.88;letter-spacing:-.025em}
+.playlist__lead{max-width:550px;margin:clamp(24px,4vw,36px) auto 0;padding:0 24px;font-size:clamp(.96rem,2.05vw,1.25rem);font-weight:700;line-height:1.18}.playlist__copy{max-width:630px;margin:clamp(10px,1.7vw,16px) auto 0;padding:0 24px;color:#b8b8b8;font-size:clamp(.92rem,1.9vw,1.14rem);line-height:1.18}
+.playlist__carousel{position:relative;isolation:isolate;margin-top:clamp(50px,9vw,92px)}.playlist__carousel::before{position:absolute;z-index:-1;inset:-38% -10% -18%;content:"";background:radial-gradient(ellipse 42% 45% at 50% 43%,rgba(190,190,190,.24),transparent 70%);pointer-events:none}
+.playlist__covers{position:relative;width:100%;height:clamp(250px,40vw,400px);overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;outline:none;--playlist-unit:clamp(64px,15vw,126px)}.playlist__covers.is-dragging{cursor:grabbing}.playlist__covers:focus-visible{box-shadow:0 0 0 2px #c90018;border-radius:18px}
+.playlist__track{position:relative;width:100%;height:100%}.playlist__cover{position:absolute;top:50%;left:50%;width:clamp(150px,26vw,300px);height:clamp(150px,26vw,300px);margin:calc(clamp(150px,26vw,300px) / -2) 0 0 calc(clamp(150px,26vw,300px) / -2);border:0;padding:0;background:none;cursor:pointer;transition:transform .62s cubic-bezier(.22,1,.36,1),filter .5s ease,opacity .5s ease;will-change:transform,filter,opacity}.playlist__cover.is-dragging{transition:none}.playlist__cover:focus-visible .playlist__art{outline:2px solid #c90018;outline-offset:4px}
+.playlist__vinyl{position:absolute;top:50%;left:62%;width:92%;height:92%;border-radius:50%;background:repeating-radial-gradient(circle at center,#111 0 2px,#2c2c2c 2px 4px);box-shadow:0 0 0 1px #5a5a5a,0 12px 30px rgba(0,0,0,.55);opacity:0;transform:translate(-50%,-50%);pointer-events:none;transition:opacity .5s ease}.playlist__cover[data-offset="0"] .playlist__vinyl{opacity:1;animation:playlist-spin 18s linear infinite}@keyframes playlist-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.playlist__art{position:relative;display:flex;width:100%;height:100%;align-items:flex-end;justify-content:flex-start;overflow:hidden;border-radius:6px;background:#303030;box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 18px 40px rgba(0,0,0,.55)}.playlist__generated,.playlist__grain,.playlist__sheen{position:absolute;inset:0}.playlist__grain{background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:3px 3px;mix-blend-mode:overlay;opacity:.5}.playlist__monogram{position:absolute;right:-6%;bottom:-14%;font-family:Anton,Impact,sans-serif;font-size:62%;line-height:1;color:rgba(255,255,255,.16);user-select:none}.playlist__sheen{background:linear-gradient(135deg,rgba(255,255,255,.20),transparent 35%)}.playlist__art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.playlist__play{position:absolute;right:10px;bottom:10px;display:flex;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid rgba(243,236,221,.25);border-radius:50%;background:rgba(11,9,7,.72);opacity:0;transform:scale(.8);transition:opacity .35s ease,transform .35s ease}.playlist__play::after{margin-left:2px;content:"";border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:10px solid #f3ecdd}.playlist__cover[data-offset="0"] .playlist__play{opacity:1;transform:scale(1)}
+.playlist__caption{min-height:3.6rem;margin-top:clamp(12px,3vw,28px);padding:0 20px}.playlist__track-title{margin:0 0 .3rem;font-family:Anton,Impact,sans-serif;font-size:clamp(1.25rem,2.5vw,1.7rem);font-weight:400;letter-spacing:.01em}.playlist__track-artist{margin:0;color:#d2d2d2;font-size:clamp(.8rem,1.5vw,.92rem);font-weight:700}
+.playlist__audio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;border:0}
+@media(max-width:600px){.playlist__covers{height:250px}.playlist__cover{width:150px;height:150px;margin:-75px 0 0 -75px}}
+
+/* Instagram feed: add each post's image and Instagram link in script.js. */
+.instagram-feed{padding:var(--section-pad-y) 24px;background:#fff;color:#191919;text-align:center}.instagram-feed__inner{width:100%;max-width:1020px;margin:0 auto}.instagram-feed h2{margin:0;font-family:Anton,Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:clamp(3.6rem,10vw,6.5rem);font-weight:400;line-height:.9;letter-spacing:-.025em}.instagram-feed__button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;max-width:100%;margin:clamp(28px,4vw,40px) auto 0;padding:10px 22px;border-radius:999px;background:#191919;color:#fff;font-family:Anton,Impact,sans-serif;font-size:clamp(.72rem,1.5vw,.92rem);font-weight:400;letter-spacing:.02em;line-height:1.05;text-decoration:none}.instagram-feed__button:hover,.instagram-feed__button:focus-visible{background:var(--seven-red)}.instagram-feed__grid{display:grid;grid-template-columns:1fr 1.85fr 1fr;gap:clamp(14px,2.7vw,28px);align-items:stretch;margin:clamp(76px,11vw,108px) auto 0}.instagram-feed__post{position:relative;display:block;min-height:clamp(280px,38vw,460px);overflow:hidden;background:#e7e7e7}.instagram-feed__post:nth-child(2){min-height:clamp(280px,38vw,460px)}.instagram-feed__post img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease,filter .45s ease}.instagram-feed__post:hover img{transform:scale(1.04);filter:brightness(.78)}.instagram-feed__post::after{position:absolute;right:14px;bottom:12px;content:'↗';color:#fff;font-size:1.4rem;line-height:1;opacity:0;transition:opacity .25s ease}.instagram-feed__post:hover::after{opacity:1}@media(max-width:600px){.instagram-feed{padding-right:16px;padding-left:16px}.instagram-feed__button{padding:10px 17px;font-size:.68rem}.instagram-feed__grid{grid-template-columns:1fr 1.6fr 1fr;gap:9px;margin-top:55px}.instagram-feed__post,.instagram-feed__post:nth-child(2){min-height:220px}}
+
+/* Contact section with a future QR-code replacement slot. */
+.contact{padding:var(--section-pad-y) 24px;background:var(--section-alt-bg);color:#191919;text-align:center}.contact__inner{width:100%;max-width:760px;margin:0 auto}.contact h2{margin:0;font-family:Anton,Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;font-size:clamp(3.7rem,10vw,6.5rem);font-weight:400;line-height:.9;letter-spacing:-.025em}.contact__lead{margin:clamp(28px,4vw,40px) 0 0;font-size:clamp(.95rem,1.7vw,1.18rem);line-height:1.25}.contact__details{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin:clamp(20px,3vw,30px) 0 0;font-family:Anton,Impact,sans-serif;font-size:clamp(1rem,1.75vw,1.25rem);letter-spacing:.01em}.contact__details a{color:inherit;text-decoration:none}.contact__details a:hover,.contact__details a:focus-visible{color:var(--seven-red)}.contact__social{margin-top:clamp(80px,12vw,120px)}.contact__social p{margin:0 0 12px;font-family:Anton,Impact,sans-serif;font-size:clamp(1.2rem,2.3vw,1.65rem);letter-spacing:.08em}.contact__social-links{display:flex;justify-content:center;gap:12px}.contact__social-links a{display:grid;width:34px;height:34px;place-items:center;border-radius:8px;background:#191919;color:#fff;line-height:1;text-decoration:none}.contact__social-links svg{width:21px;height:21px;fill:currentColor}.contact__social-links a:hover,.contact__social-links a:focus-visible{background:var(--seven-red)}.contact__handle{display:inline-block;margin-top:7px;color:#555;font-size:1rem;text-decoration:none}.contact__handle:hover,.contact__handle:focus-visible{color:var(--seven-red)}@media(max-width:600px){.contact{padding-right:16px;padding-left:16px}.contact__details{gap:10px;font-size:.94rem}.contact__social{margin-top:70px}}
+
+/* Reference-style footer using the existing SEVEN logo asset. */
+.site-footer{padding:clamp(62px,9vw,94px) 24px 38px;background:#191919;color:#fff}.site-footer__inner{position:relative;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto auto;max-width:1040px;margin:0 auto}.site-footer a{color:inherit;text-decoration:none}.site-footer__nav{display:flex;flex-direction:column;gap:5px;align-self:center;font-size:clamp(.95rem,1.6vw,1.08rem);line-height:1.1}.site-footer__nav a:hover,.site-footer__nav a:focus-visible,.site-footer__legal a:hover,.site-footer__legal a:focus-visible{color:#d5d5d5}.site-footer__logo{display:flex;align-items:center;justify-content:center;width:112px;align-self:center}.site-footer__logo img{display:block;width:100%;height:auto}.site-footer__legal{display:flex;grid-column:1 / -1;justify-content:space-between;gap:22px;margin-top:clamp(72px,11vw,116px);color:#e5e5e5;font-size:clamp(.86rem,1.5vw,1rem)}.site-footer__copyright{grid-column:1 / -1;margin:clamp(22px,3vw,30px) 0 0;text-align:center;color:#e5e5e5;font-size:clamp(.88rem,1.45vw,1rem)}@media(max-width:600px){.site-footer{padding:55px 24px 30px}.site-footer__inner{grid-template-columns:1fr auto}.site-footer__logo{width:88px}.site-footer__legal{flex-wrap:wrap;justify-content:center;margin-top:60px;gap:14px 24px;text-align:center}.site-footer__copyright{margin-top:20px}}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--seven-red);
+  outline-offset: 4px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 112px;
+  }
+
+  .hero :is(video, .hero__canvas, .hero__poster) {
+    object-position: center 52%;
+  }
+
+  .brand-marquee {
+    padding: 28px 0;
+  }
+
+  .gallery__slide {
+    height: min(78svh, 900px);
+  }
+
+  .our-story__copy {
+    max-width: 850px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .brand-marquee__track {
+    animation-play-state: paused;
+  }
+}
+
+/* SEVEN burger: reference proportions, restrained floating motion */
+.burger-story{height:145vh;position:relative;background:var(--section-alt-bg);color:#191919}
+.burger-story__sticky{height:100vh;min-height:560px;position:sticky;top:0;overflow:hidden;display:flex;flex-direction:column;align-items:center}
+.burger-story__heading{text-align:center;z-index:3;padding:clamp(25px,5vh,48px) 16px 0;flex:none}
+.burger-story__heading h2{font-family:Impact,'Arial Narrow',sans-serif;font-size:clamp(46px,7vw,72px);line-height:1;margin:0 0 12px;letter-spacing:-.025em}
+.burger-story__heading p{font-size:clamp(12px,1.4vw,16px);line-height:1.2;margin:0 auto 30px;max-width:480px}
+.burger-story__button{display:inline-block;min-width:285px;background:#191919;color:#fff;text-decoration:none;border-radius:30px;padding:10px 30px;font-family:Impact,'Arial Narrow',sans-serif;font-size:14px;font-weight:400;line-height:1.1;letter-spacing:.015em}
+.menu-placeholder{min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#f8f8f8;padding:50px 20px;scroll-margin-top:20px}
+.menu-placeholder h2{font-family:Impact,'Arial Narrow',sans-serif;font-size:clamp(44px,7vw,70px);margin:0}
+.menu-placeholder p{font-size:16px;margin:12px 0}
+@media(max-width:600px){.burger-story{height:140vh}.burger-story__sticky{min-height:0}.burger-story__heading{padding-top:clamp(25px,5vh,44px)}.burger-story__heading p{max-width:340px;margin-bottom:26px}.desktop-break{display:none}.burger-story__button{min-width:0;width:min(285px,80vw)}}
+@media(prefers-reduced-motion:reduce){.burger-story{height:auto}}
+
+/* Refinement: compact, naturally proportioned burger and lighter heading */
+.burger-story__heading h2{font-family:'Arial Narrow',Arial,sans-serif;font-stretch:condensed;font-weight:700;font-size:clamp(40px,6vw,62px);letter-spacing:-.035em}
+@media(max-width:600px){.burger-story__heading h2{font-size:clamp(39px,10vw,54px)}}
+/* ==========================================================================
+   OUR MENU — SEVEN smash burger (single source of truth for every screen).
+   The stage is exactly as wide as the smashed patty; every layer is centred
+   at its own natural width and keeps its natural aspect ratio (no stretching).
+   script.js stacks the layers vertically (tight assembled burger → small,
+   controlled separation on scroll) and sizes the stage height to fit.
+   Stage width per screen (--burger-w):
+     mobile  ~90% of the content width, below the text & button
+     tablet  slightly smaller than desktop, centred under the text
+     laptop / desktop / large  right half, vertically centred (screens/wide.css,
+     screens/large.css)
+   ========================================================================== */
+.burger-story__sticky{overflow:visible;min-height:0}
+.burger-story__stage{
+  --burger-ratio:1.04;            /* height ÷ width of the burger at full separation */
+  --burger-w:clamp(260px,calc((100vw - 32px) * .9),560px);
+  --label-gap:clamp(14px,1.6vw,26px);
+  --label-line:clamp(18px,2vw,34px);
+  --label-w:clamp(110px,13vw,190px);
+  position:relative;flex:0 0 auto;
+  width:var(--burger-w);
+  height:calc(var(--burger-w) * var(--burger-ratio));   /* replaced with the measured height by script.js */
+  max-height:none;margin:clamp(20px,4vh,40px) auto 0;
+  overflow:visible;--explode:0;--label-opacity:0
+}
+.burger-story__piece{
+  position:absolute;top:0;left:50%;
+  width:calc(var(--w,.9) * 100%);height:auto;
+  transform:translateX(-50%);will-change:top;overflow:visible;
+  display:block
+}
+/* Layer widths relative to the patty (the patty is the widest, with crispy edges past the bun). */
+.burger-story__piece:nth-child(1){--w:.90;z-index:4}   /* glossy top potato bun   */
+.burger-story__piece:nth-child(2){--w:.84;z-index:5}   /* signature SEVEN sauce   */
+.burger-story__piece:nth-child(3){--w:.90;z-index:3}   /* melted cheddar          */
+.burger-story__piece:nth-child(4){--w:1;z-index:2}     /* smashed beef patty      */
+.burger-story__piece:nth-child(5){--w:.88;z-index:1}   /* toasted bottom potato bun */
+.burger-story__piece img{
+  display:block;width:100%;height:auto;max-width:none;object-fit:contain;
+  filter:drop-shadow(0 6px 10px rgba(60,30,5,.12))
+}
+.burger-story__piece:nth-child(5) img{filter:drop-shadow(0 22px 26px rgba(40,20,5,.22))}
+/* Annotation: a short rule from the burger's right edge, then the layer name.
+   Positioned from the stage edge so every label lines up in one column. */
+.burger-story__piece::before,
+.burger-story__piece::after{position:absolute;top:50%;opacity:var(--label-opacity);pointer-events:none}
+.burger-story__piece::before{
+  content:"";left:calc(50% + 50% / var(--w,1) + var(--label-gap));
+  width:var(--label-line);height:1px;background:#222;border:0
+}
+.burger-story__piece::after{
+  content:attr(data-name);
+  left:calc(50% + 50% / var(--w,1) + var(--label-gap) + var(--label-line) + 10px);
+  width:var(--label-w);min-width:0;padding:0;border:0;transform:translateY(-50%);
+  font:400 clamp(11px,1vw,15px)/1.3 Inter,Arial,sans-serif;color:#2a2a2a;white-space:normal
+}
+/* Phones: burger below the text & button, centred, ~90% of the content width.
+   No room for side labels at this size, so the burger itself carries the story. */
+@media (max-width:767px){
+  .burger-story__stage{--burger-w:clamp(260px,calc((100vw - 32px) * .9),540px);margin:clamp(28px,6vw,40px) auto 0}
+  .burger-story__piece::before,.burger-story__piece::after{display:none}
+}
+/* Tablets (and the tablet design on touch screens up to 1366px): text on top,
+   burger centred beneath, slightly smaller than desktop and always fully in view. */
+@media (min-width:768px){
+  .burger-story__stage{
+    --burger-w:min(clamp(400px,62vw,600px),calc((100svh - var(--header-height) - 340px) / var(--burger-ratio)));
+    --label-w:clamp(110px,15vw,170px);
+    /* Centre burger + labels as one group, and centre it in the height left under the text. */
+    left:calc((var(--label-gap) + var(--label-line) + 10px + var(--label-w)) / -2 * var(--label-opacity));
+    margin-top:auto;margin-bottom:auto
+  }
+}
+
+
+/* Minimal white navigation overlay — matches approved reference. */
+#menu.menu{background:#fff;color:#171717;overflow-y:auto;justify-content:center;padding:80px 20px;isolation:isolate}
+#menu.menu::before,#menu.menu::after{content:none}
+#menu ul{width:100%;max-width:720px;margin:0;padding:0;list-style:none;text-align:center}
+#menu li{overflow:visible}
+#menu li+li{margin-top:clamp(32px,5.4vh,72px)}
+#menu a{display:inline-block;position:relative;color:#171717;font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-size:clamp(1.45rem,3.7vw,3.1rem);font-weight:300;letter-spacing:.14em;line-height:1.25;text-transform:uppercase;text-decoration:none;transition:color .2s ease}
+#menu a::after{content:none}
+#menu a:hover,#menu a:focus-visible{color:var(--seven-red);transform:none}
+#menu a[href="menu.html"]{border:0;padding:0 0 9px;border-bottom:2px solid var(--seven-red)}
+#menu #close-menu{top:max(20px,env(safe-area-inset-top));right:clamp(18px,5vw,52px);color:#171717;font-size:2.6rem;font-weight:200;z-index:2;transition:color .2s ease}
+#menu #close-menu:hover{color:var(--seven-red);transform:none}
+@media(max-width:600px){#menu.menu{padding:78px 18px 55px}#menu a{font-size:clamp(1.15rem,5.1vw,1.7rem);letter-spacing:.1em}#menu li+li{margin-top:clamp(30px,6vh,55px)}}
+@media(prefers-reduced-motion:reduce){#menu a,#menu #close-menu{transition:none}}
+
+/* More breathing room for the location navigation label. */
+#menu li:last-child a{word-spacing:.32em;letter-spacing:.17em}
+#menu li:last-child{margin-top:clamp(44px,7vh,90px)}
+@media(max-width:600px){#menu li:last-child a{font-size:clamp(1.05rem,4.5vw,1.55rem);word-spacing:.26em;letter-spacing:.12em}#menu li:last-child{margin-top:clamp(40px,7vh,72px)}}
+
+/* Responsive layout foundation: every section fills the available page width
+   and uses the same controlled rhythm from small phones to wide screens. */
+:root{
+  --page-gutter: clamp(16px, 4vw, 80px);
+  --section-pad-y: clamp(52px, 7vw, 104px);
+}
+
+img, video{max-width:100%}
+main, .page-shell{width:100%;max-width:none}
+section{width:100%;isolation:isolate}
+
+.hero{min-height:calc(100svh - var(--header-height));height:calc(100svh - var(--header-height))}
+.hero :is(video, .hero__canvas, .hero__poster){object-fit:cover}
+
+.our-story,.best-sellers__sticky,.partners,.franchise,.location,
+.instagram-feed,.contact{padding-top:var(--section-pad-y);padding-bottom:var(--section-pad-y)}
+
+.our-story,.franchise,.instagram-feed{padding-right:var(--page-gutter);padding-left:var(--page-gutter)}
+.partners,.location,.contact{padding-right:var(--page-gutter);padding-left:var(--page-gutter)}
+
+.best-sellers{background:#fff}
+.best-sellers__sticky{width:100%;min-height:auto;padding-right:var(--page-gutter);padding-left:var(--page-gutter)}
+.best-sellers__cards{width:min(100%,1180px);grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3.2vw,50px)}
+.best-sellers__card{min-width:0}
+.best-sellers__card img{width:100%;max-width:360px;height:auto}
+
+.partners{background:var(--section-alt-bg)}
+.partners__logos{margin-top:clamp(42px,6vw,72px)}
+.franchise{min-height:auto}
+.location{background:var(--section-alt-bg)}
+
+@media (max-width:767px){
+  :root{--page-gutter:16px;--section-pad-y:52px}
+  #header{padding-right:var(--page-gutter);padding-left:var(--page-gutter)}
+  #logo{width:clamp(128px,48vw,185px)}
+  .hero{min-height:calc(100svh - var(--header-height));height:calc(100svh - var(--header-height))}
+  .best-sellers__cards{grid-template-columns:1fr;gap:32px;margin-top:34px}
+  .best-sellers__card img{max-width:min(88vw,360px)}
+  .partners__logos{flex-wrap:wrap;gap:30px;margin-top:42px}
+  .partners__logo,.partners__logo--martins{width:min(44vw,180px)}
+  .location__map{width:100%;height:clamp(250px,72vw,360px);margin-top:36px}
+  .burger-story{height:auto;min-height:100svh}
+}
+
+@media (min-width:1440px){
+  :root{--page-gutter:clamp(56px,7vw,140px)}
+  .best-sellers__cards{max-width:1280px}
+}
+
+/* Brand typography application: Druk for hierarchy, Inter for readable UI text. */
+.hero-text h1 { font-family: 'Druk Text', Impact, sans-serif; font-weight: 900; }
+.brand-marquee__group,
+.best-sellers h2, .best-sellers h3,
+.partners h2,
+.menu-page h1,
+.franchise h2,
+.location h2,
+.playlist h2,
+.instagram-feed h2,
+.contact h2,
+.burger-story__heading h2,
+.menu-placeholder h2 { font-family: 'Druk Text', Impact, sans-serif; font-weight: 800; }
+.menu-card h2 { font-family: 'Druk Text', Impact, sans-serif; font-weight: 700; }
+.franchise__button,
+.instagram-feed__button,
+.playlist__track-title,
+.contact__details,
+.contact__social p,
+.burger-story__button { font-family: 'Druk Text', Impact, sans-serif; font-weight: 500; }
+.menu-page__back,
+.menu a,
+.menu-card > p:last-child,
+.menu-page__heading p,
+.contact__lead,
+.contact__handle { font-family: Inter, Arial, sans-serif; }
+.display-script { font-family: Signatoria, cursive; font-weight: 400; }
+
+/* Phone reference refinement: this project is deliberately mobile-first until
+   the desktop artwork is supplied. These rules override older experimental
+   desktop measurements and keep all hierarchy on the supplied Druk/Inter set. */
+@media (max-width: 767px) {
+  :root {
+    --header-height: 64px;
+    --page-gutter: 20px;
+    --section-pad-y: 68px;
+  }
+
+  #header { height: var(--header-height); padding: 0 var(--page-gutter); }
+  #logo { width: 128px; }
+  .page-shell { padding-top: var(--header-height); }
+
+  .hero { height: calc(100svh - var(--header-height)); min-height: 540px; }
+  .hero :is(video, .hero__canvas, .hero__poster) { transform: scale(1.12); object-position: 52% center; }
+  .hero-text { left: 24px; bottom: 35px; }
+  .hero-text h1 {
+    font-family: 'Druk Text', Impact, sans-serif;
+    font-size: clamp(4.2rem, 18vw, 5.8rem);
+    font-weight: 900;
+    line-height: .87;
+    letter-spacing: -.045em;
+  }
+
+  .brand-marquee { padding: 13px 0 12px; }
+  .brand-marquee__track { animation-duration: 22s; }
+  .brand-marquee__group {
+    gap: 19px;
+    padding-right: 19px;
+    font-family: 'Druk Text', Impact, sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .115em;
+  }
+  .brand-bars { flex-basis: 17px; width: 17px; height: 8px; background-size: 17px 8px; }
+
+  .gallery__slide { height: 74svh; min-height: 500px; }
+  .gallery__track { overflow: hidden; scroll-snap-type: none; touch-action: pan-y; cursor: default; }
+  .gallery__slide--placeholder { font-family: 'Druk Text', Impact, sans-serif; font-weight: 700; }
+
+  .our-story { min-height: 0; padding: 68px 32px 72px; }
+  .our-story h2 {
+    font-family: 'Druk Text', Impact, sans-serif;
+    font-size: clamp(3.75rem, 15.5vw, 4.65rem);
+    font-weight: 800;
+    line-height: .88;
+    letter-spacing: -.045em;
+  }
+  .our-story__copy { margin-top: 58px; font-size: 13px; line-height: 1.27; }
+  .our-story__copy p + p { margin-top: 28px; }
+  .our-story__copy p:last-child { margin-top: 32px; }
+
+  .burger-story__heading h2,
+  .best-sellers h2,
+  .partners h2,
+  .franchise h2,
+  .location h2,
+  .playlist h2,
+  .instagram-feed h2,
+  .contact h2 {
+    font-family: 'Druk Text', Impact, sans-serif;
+    font-weight: 800;
+    letter-spacing: -.045em;
+  }
+  .burger-story__heading h2 { font-size: clamp(3.3rem, 14.5vw, 4.2rem); line-height: .88; }
+  .burger-story__button,
+  .franchise__button { font-family: Inter, Arial, sans-serif; font-weight: 600; letter-spacing: .045em; }
+  .burger-story__button { min-width: 0; width: min(285px, 82vw); min-height: 46px; padding: 13px 22px; font-size: 10px; }
+
+  .best-sellers__sticky { padding: 68px 20px 76px; }
+  .best-sellers h2 { font-size: clamp(3.65rem, 15vw, 4.6rem); line-height: .88; }
+  .best-sellers__cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; width: 100%; margin-top: 34px; }
+  .best-sellers__card img { width: 100%; max-width: none; max-height: none; }
+  .best-sellers__card h3 { margin-top: 8px; font-family: 'Druk Text', Impact, sans-serif; font-weight: 700; font-size: clamp(8px, 2.35vw, 10px); line-height: .94; letter-spacing: -.025em; }
+
+  .partners, .franchise, .location { padding: 68px 20px; }
+  .partners h2, .franchise h2, .location h2, .playlist h2, .contact h2 { font-size: clamp(3.55rem, 14.6vw, 4.45rem); line-height: .88; }
+  .partners p, .franchise__copy { font-size: 14px; line-height: 1.32; }
+  .franchise h3 { margin-top: 18px; font-size: 15px; letter-spacing: -.025em; }
+  .franchise__button { width: 100%; margin-top: 42px; padding: 13px 16px; font-size: 9px; }
+
+  .playlist { padding: 68px 0 72px; }
+  .playlist__lead, .playlist__copy { padding: 0 28px; }
+  .playlist__lead { margin-top: 28px; font-size: 14px; line-height: 1.24; }
+  .playlist__copy { margin-top: 14px; font-size: 13px; line-height: 1.3; }
+  .playlist__carousel { margin-top: 52px; }
+  .contact { padding: 68px 20px; }
+}
+
+/* ------------------------------------------------------------------
+   Second-screen gallery: seamless endless slider (see script.js).
+   Slides sit side by side via transforms; the track glides between them.
+------------------------------------------------------------------- */
+.gallery { --gallery-h: clamp(560px, 82svh, 860px); touch-action: pan-y; }
+.gallery.is-enhanced .gallery__track {
+  position: relative;
+  display: block;
+  height: var(--gallery-h);
+  overflow: visible;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  touch-action: pan-y;
+  cursor: grab;
+  transition: transform 1100ms cubic-bezier(.65, 0, .35, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.gallery.is-enhanced .gallery__track.is-instant,
+.gallery.is-enhanced .gallery__track.is-dragging { transition: none; }
+.gallery.is-enhanced .gallery__track.is-dragging { cursor: grabbing; user-select: none; }
+.gallery.is-enhanced .gallery__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  backface-visibility: hidden;
+}
+@media (min-width: 768px) { .gallery { --gallery-h: min(78svh, 900px); } }
+@media (max-width: 767px) { .gallery { --gallery-h: max(74svh, 500px); } }
+
+/* ------------------------------------------------------------------
+   Instagram feed: endless, draggable carousel of the chosen posts.
+------------------------------------------------------------------- */
+.instagram-feed { overflow: hidden; }
+.instagram-feed__carousel {
+  --ig-card: clamp(230px, 25vw, 340px);
+  --ig-gap: clamp(14px, 2vw, 24px);
+  position: relative;
+  width: 100vw;
+  margin: clamp(60px, 9vw, 96px) calc(50% - 50vw) 0;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+}
+.instagram-feed__carousel[hidden] { display: none; }
+.instagram-feed__carousel.is-dragging { cursor: grabbing; }
+.instagram-feed__carousel:focus-visible { box-shadow: inset 0 0 0 3px var(--seven-red); }
+.instagram-feed__track {
+  display: flex;
+  gap: var(--ig-gap);
+  width: max-content;
+  will-change: transform;
+}
+.instagram-feed__carousel .instagram-feed__post,
+.instagram-feed__carousel .instagram-feed__post:nth-child(2) {
+  flex: 0 0 var(--ig-card);
+  width: var(--ig-card);
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+.instagram-feed__carousel .instagram-feed__post img { pointer-events: none; }
+.instagram-feed__carousel.is-dragging .instagram-feed__post img { transform: none; filter: none; }
+.instagram-feed__carousel .instagram-feed__post::after { font-size: 1.5rem; }
+@media (hover: none) { .instagram-feed__carousel .instagram-feed__post::after { opacity: .9; } }
+@media (max-width: 600px) {
+  .instagram-feed__carousel { --ig-card: 66vw; --ig-gap: 10px; margin-top: 48px; }
+}
+
+/* ------------------------------------------------------------------
+   Buttons: larger, easier-to-read labels, same clean SEVEN pill style.
+------------------------------------------------------------------- */
+.burger-story__button { font-size: 17px; padding: 13px 34px; min-height: 48px; line-height: 1.15; }
+.franchise__button { font-size: clamp(1rem, 1.6vw, 1.15rem); min-height: 54px; padding: 15px 28px; line-height: 1.2; }
+.instagram-feed__button { font-size: clamp(1rem, 1.6vw, 1.15rem); min-height: 52px; padding: 14px 28px; line-height: 1.2; }
+.menu-page__back { font-size: 1.1rem; }
+@media (max-width: 767px) {
+  .burger-story__button { width: min(300px, 84vw); min-height: 52px; padding: 15px 22px; font-size: 14px; letter-spacing: .04em; }
+  .franchise__button { min-height: 56px; padding: 15px 20px; font-size: 13px; letter-spacing: .03em; line-height: 1.3; }
+  .instagram-feed__button { min-height: 54px; padding: 14px 20px; font-size: 15px; line-height: 1.2; }
+  .menu-page__back { font-size: 1.05rem; }
+}
+
+/* ------------------------------------------------------------------
+   Header: larger SEVEN logo (trimmed artwork aligns flush with the gutter).
+------------------------------------------------------------------- */
+.header-logo { display: flex; align-items: center; line-height: 0; }
+#logo { width: clamp(190px, 17vw, 250px); height: auto; }
+@media (max-width: 767px) {
+  :root { --header-height: 72px; }
+  #logo { width: 150px; }
+}
+
+/* ------------------------------------------------------------------
+   Three-dot menu: official Seven display type (Druk Text Heavy).
+------------------------------------------------------------------- */
+#menu a {
+  font-family: 'Druk Text', Impact, sans-serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 5.2vw, 4.6rem);
+  letter-spacing: .005em;
+  line-height: .95;
+  padding: 0 0 6px;
+}
+#menu li + li, #menu li:last-child { margin-top: clamp(16px, 2.8vh, 30px); }
+#menu li:last-child a { word-spacing: normal; letter-spacing: .005em; font-size: inherit; }
+#menu li:last-child a { font-size: clamp(3rem, 5.2vw, 4.6rem); }
+#menu a[href="menu.html"] { border-bottom: 0; padding-bottom: 6px; }
+#menu a[aria-current] { color: var(--seven-red); border-bottom: 3px solid var(--seven-red); }
+@media (max-width: 600px) {
+  #menu a, #menu li:last-child a { font-size: clamp(2.5rem, 11.5vw, 3.3rem); letter-spacing: .005em; }
+  #menu li + li, #menu li:last-child { margin-top: clamp(14px, 2.6vh, 24px); }
+}
+
+/* ------------------------------------------------------------------
+   Menu page: the same fixed header stays visible at the top.
+------------------------------------------------------------------- */
+.menu-page-body .menu-page { padding-top: calc(var(--header-height) + clamp(28px, 5vw, 56px)); }
+.menu-page-body .menu-page__back { position: static; display: inline-block; margin: 0 0 clamp(24px, 4vw, 40px); }
+
+/* Our Story heading uses Druk on every screen size (it previously fell back to a system font on desktop). */
+.our-story h2 { font-family: 'Druk Text', Impact, sans-serif; font-weight: 800; letter-spacing: -.035em; line-height: .9; }
+
+/* ------------------------------------------------------------------
+   Playlist: light section, frosted-glass pill holding an endless
+   carousel of pill-shaped covers (reference style).
+------------------------------------------------------------------- */
+.playlist { background: #fff; color: #191919; }
+.playlist__lead { color: #191919; }
+.playlist__copy { color: #3d3d3d; }
+.playlist__carousel { position: relative; isolation: isolate; margin-top: clamp(44px, 7vw, 80px); padding: 0 var(--page-gutter); }
+/* Soft grey shapes behind the glass so the blur has something to soften. */
+.playlist__carousel::before {
+  position: absolute; z-index: -1; inset: -12% 4% 18%;
+  content: "";
+  background:
+    radial-gradient(34% 60% at 22% 55%, rgba(25, 25, 25, .16), transparent 70%),
+    radial-gradient(30% 55% at 78% 45%, rgba(25, 25, 25, .12), transparent 72%),
+    radial-gradient(24% 45% at 52% 70%, rgba(183, 25, 35, .07), transparent 75%);
+  filter: blur(28px);
+  pointer-events: none;
+}
+.playlist__glass {
+  position: relative;
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding: clamp(22px, 2.6vw, 34px) 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(246, 245, 242, .5));
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, .85);
+  box-shadow:
+    0 30px 60px -34px rgba(0, 0, 0, .28),
+    0 2px 10px rgba(0, 0, 0, .04),
+    inset 0 1px 0 rgba(255, 255, 255, .9),
+    inset 0 0 0 1px rgba(0, 0, 0, .035);
+  overflow: hidden;
+}
+.playlist__viewport {
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  /* Covers fade softly into the rounded ends of the pill. */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+}
+.playlist__viewport.is-dragging { cursor: grabbing; }
+.playlist__glass:has(.playlist__viewport:focus-visible) { box-shadow: 0 0 0 3px var(--seven-red), 0 30px 60px -34px rgba(0, 0, 0, .28); }
+.playlist__rail { display: flex; gap: clamp(14px, 1.7vw, 22px); width: max-content; padding: 10px 0; will-change: transform; }
+.playlist__card {
+  --card-w: clamp(104px, 10.5vw, 150px);
+  position: relative;
+  flex: 0 0 var(--card-w);
+  width: var(--card-w);
+  aspect-ratio: 1 / 2;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #d9d9d9;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 14px 26px -18px rgba(0, 0, 0, .45);
+  transform: scale(.94);
+  transition: transform .5s cubic-bezier(.22, 1, .36, 1), box-shadow .5s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.playlist__card.is-focused { transform: scale(1); box-shadow: 0 22px 34px -20px rgba(0, 0, 0, .55); }
+.playlist__art { position: absolute; inset: 0; display: block; filter: grayscale(1) contrast(1.05); transition: filter .5s ease; }
+.playlist__card.is-focused .playlist__art { filter: grayscale(0); }
+@media (hover: hover) { .playlist__card:hover .playlist__art { filter: grayscale(0); } }
+.playlist__art img, .playlist__generated { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.playlist__monogram { position: absolute; left: 50%; bottom: 14%; transform: translateX(-50%); font-family: 'Druk Text', Impact, sans-serif; font-weight: 900; font-size: calc(var(--card-w) * .62); line-height: 1; color: rgba(255, 255, 255, .22); }
+.playlist__play {
+  position: absolute; left: 50%; bottom: 12px;
+  display: grid; place-items: center;
+  width: 36px; height: 36px; margin-left: -18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .55);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, .7);
+  opacity: 0; transform: scale(.8);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.playlist__play::after { content: ""; margin-left: 3px; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 11px solid #191919; }
+.playlist__card.is-playing .playlist__play::after { width: 10px; height: 12px; margin: 0; border: 0; border-left: 3px solid #191919; border-right: 3px solid #191919; }
+.playlist__card.is-focused .playlist__play { opacity: 1; transform: scale(1); }
+.playlist__caption { min-height: 3.6rem; margin-top: clamp(18px, 2.6vw, 30px); padding: 0 20px; }
+.playlist__track-title { color: #191919; font-family: 'Druk Text', Impact, sans-serif; font-weight: 800; font-size: clamp(1.35rem, 2.4vw, 1.8rem); letter-spacing: .005em; }
+.playlist__track-artist { color: #6a6a6a; font-size: clamp(.85rem, 1.4vw, .95rem); font-weight: 500; }
+
+@media (max-width: 767px) {
+  .playlist__carousel { margin-top: 40px; padding: 0 8px; }
+  .playlist__glass { width: 100%; padding: 20px 0; border-radius: 132px; }
+  .playlist__viewport { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 13%, #000 87%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 13%, #000 87%, transparent 100%); }
+  .playlist__rail { gap: 12px; }
+  .playlist__card { --card-w: 27vw; }
+}
+@media (prefers-reduced-motion: reduce) { .playlist__card, .playlist__art { transition: none; } }
+.playlist__rail { padding: 16px 0 30px; }
+.playlist__glass { padding-top: clamp(14px, 1.8vw, 22px); padding-bottom: clamp(8px, 1vw, 12px); }
+@media (min-width: 768px) { .playlist__lead { max-width: 640px; } .playlist__lead .desktop-break { display: none; } }
+
+/* ------------------------------------------------------------------
+   Header: bigger, and always visible — it now sits above the open menu,
+   where the three dots turn into a close (×) button.
+------------------------------------------------------------------- */
+:root { --header-height: 128px; }
+#header { z-index: 120; }
+#logo { width: clamp(230px, 20vw, 310px); }
+#menu-button { position: relative; width: 52px; height: 52px; gap: 5px; }
+#menu-button .dot { width: 8px; height: 8px; transition: opacity .2s ease, transform .3s ease; }
+#menu-button::before, #menu-button::after {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  width: 30px; height: 3px; margin: -1.5px 0 0 -15px;
+  border-radius: 999px; background: var(--seven-red);
+  opacity: 0; transform: rotate(0deg) scaleX(.3);
+  transition: opacity .2s ease, transform .3s cubic-bezier(.22, 1, .36, 1);
+}
+body.menu-open #menu-button .dot { opacity: 0; transform: scale(.4); }
+body.menu-open #menu-button::before { opacity: 1; transform: rotate(45deg); }
+body.menu-open #menu-button::after { opacity: 1; transform: rotate(-45deg); }
+#menu #close-menu { display: none; }
+#menu.menu { padding-top: calc(var(--header-height) + 24px); }
+@media (max-width: 767px) {
+  :root { --header-height: 84px; }
+  #logo { width: 184px; }
+  #menu-button { width: 48px; height: 48px; gap: 5px; }
+  #menu-button .dot { width: 7px; height: 7px; }
+  #menu-button::before, #menu-button::after { width: 26px; margin-left: -13px; }
+  #menu.menu { padding-top: calc(var(--header-height) + 16px); }
+}
+
+/* "Find us on" in the Seven signature script (Signatoria). */
+.contact__social p.contact__find-us {
+  margin: 0 0 18px;
+  font-family: 'Signatoria', cursive;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+/* Header "breathe" while gliding to a section: the white bar extends a touch,
+   the logo and dots grow slightly, a soft shadow appears — then all settles. */
+#header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #fff;
+  transform-origin: top center;
+  pointer-events: none;
+}
+#header .header-logo { transform-origin: left center; }
+#header #menu-button { transform-origin: right center; }
+#header.is-gliding::before { animation: header-breathe-bar var(--glide-duration, 1000ms) cubic-bezier(.45, 0, .2, 1) both; }
+#header.is-gliding .header-logo,
+#header.is-gliding #menu-button { animation: header-breathe-mark var(--glide-duration, 1000ms) cubic-bezier(.45, 0, .2, 1) both; }
+@keyframes header-breathe-bar {
+  0%   { transform: scaleY(1);    box-shadow: 0 0 0 rgba(0, 0, 0, 0); }
+  42%  { transform: scaleY(1.16); box-shadow: 0 16px 34px -22px rgba(0, 0, 0, .22); }
+  100% { transform: scaleY(1);    box-shadow: 0 0 0 rgba(0, 0, 0, 0); }
+}
+@keyframes header-breathe-mark {
+  0%   { transform: scale(1); }
+  42%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #header.is-gliding::before, #header.is-gliding .header-logo, #header.is-gliding #menu-button { animation: none; }
+}
+
+/* ------------------------------------------------------------------
+   Playlist refinements: no outline around the glass oval; covers are
+   softly blurred and smaller, the centred one is sharp at scale(1.08).
+------------------------------------------------------------------- */
+.playlist__glass {
+  border: 0;
+  box-shadow: 0 40px 80px -52px rgba(0, 0, 0, .24);
+}
+.playlist__glass:has(.playlist__viewport:focus-visible) { box-shadow: 0 0 0 3px var(--seven-red), 0 40px 80px -52px rgba(0, 0, 0, .24); }
+.playlist__card,
+.playlist__card.is-focused {
+  --f: 1;
+  transform: scale(calc(1.08 - var(--f) * .18));
+  filter: blur(calc(var(--f) * 3.5px)) grayscale(var(--f));
+  transition: box-shadow .45s ease;
+  will-change: transform, filter;
+}
+.playlist__card.is-focused { box-shadow: 0 24px 36px -22px rgba(0, 0, 0, .5); }
+.playlist__art,
+.playlist__card.is-focused .playlist__art { filter: none; }
+@media (hover: hover) { .playlist__card:hover .playlist__art { filter: none; } }
+.playlist__rail { padding: 22px 0 34px; }
+@media (max-width: 767px) { .playlist__card, .playlist__card.is-focused { filter: blur(calc(var(--f) * 2.5px)) grayscale(var(--f)); } }
+
+/* ------------------------------------------------------------------
+   Content-height sections with one responsive spacing scale.
+   --section-pad-y : padding above/below every section
+   --stack-gap     : heading/intro → main content (carousel, map, cards…)
+------------------------------------------------------------------- */
+:root { --section-pad-y: clamp(64px, 6vw, 92px); --stack-gap: clamp(32px, 3.5vw, 52px); }
+@media (max-width: 767px) { :root { --section-pad-y: 52px; --stack-gap: 28px; } }
+
+.our-story, .best-sellers__sticky, .partners, .franchise, .location,
+.playlist, .instagram-feed, .contact {
+  min-height: 0;
+  padding-top: var(--section-pad-y);
+  padding-bottom: var(--section-pad-y);
+}
+.our-story { min-height: 0; }
+.our-story__copy { margin-top: var(--stack-gap); }
+.best-sellers__cards { margin-top: var(--stack-gap); }
+.partners__logos { margin-top: var(--stack-gap); }
+.franchise__button { margin-top: var(--stack-gap); }
+.location__map { margin-top: var(--stack-gap); }
+.playlist__carousel { margin-top: var(--stack-gap); }
+.playlist__caption { min-height: 0; }
+.instagram-feed__button { margin-top: clamp(20px, 2.2vw, 30px); }
+.instagram-feed__carousel { margin-top: var(--stack-gap); }
+.contact__social { margin-top: calc(var(--stack-gap) + 8px); }
+
+@media (max-width: 767px) {
+  .our-story { padding: var(--section-pad-y) 28px; }
+  .our-story__copy p + p { margin-top: 18px; }
+  .our-story__copy p:last-child { margin-top: 22px; }
+  .best-sellers__sticky { padding: var(--section-pad-y) 20px; }
+  .partners, .franchise, .location, .contact { padding: var(--section-pad-y) 20px; }
+  .partners__logos { flex-wrap: nowrap; gap: 20px; }
+  .partners__logo, .partners__logo--martins { width: min(40vw, 170px); height: 70px; }
+  .playlist { padding: var(--section-pad-y) 0; }
+  .contact__social { margin-top: 36px; }
+  /* Burger section: sized to its content on phones (no forced full-screen). */
+  .burger-story { height: auto; min-height: 0; }
+  .burger-story__sticky { position: relative; top: auto; height: auto; padding-bottom: var(--section-pad-y); }
+  .burger-story__heading { padding-top: var(--section-pad-y); }
+  .burger-story__stage { margin-bottom: 0; }
+}
+/* Desktop: the burger stays pinned (below the header) while its layers separate. */
+@media (min-width: 768px) {
+  .burger-story__sticky { top: var(--header-height); height: calc(100vh - var(--header-height)); }
+  .burger-story { height: calc(100vh + 35vh); }
+}
+
+/* ------------------------------------------------------------------
+   Menu focus: after gliding to a section from the menu, the other
+   sections softly fade back so the chosen one stands alone. Scrolling
+   or swiping brings everything back.
+------------------------------------------------------------------- */
+.page-shell > section, .site-footer { transition: opacity .6s ease; }
+body.is-focus-mode .page-shell > section:not(.is-focused):not(#gallery) { opacity: .06; }
+@media (prefers-reduced-motion: reduce) { .page-shell > section, .site-footer { transition: none; } }
+
+/* Soft page-to-page transition (homepage ↔ menu page). */
+body > main, body > .site-footer { transition: opacity .26s ease; }
+body.is-leaving > main, body.is-leaving > .site-footer { opacity: 0; }
+.menu-page-body .menu-page { animation: page-in .45s ease both; }
+@keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .menu-page-body .menu-page { animation: none; } }
+
+/* ------------------------------------------------------------------
+   Signatoria — signature/handwritten accents only (Playlist title,
+   taglines, creative notes). Druk stays for bold headings, Inter for text.
+   The @font-face for 'Signatoria' is at the top of this file
+   (assets/fonts/SIGNATORIA.OTF).
+------------------------------------------------------------------- */
+.signature-text,
+.playlist h2.signature-text,
+.our-story__copy p.signature-text,
+.contact__social p.signature-text {
+  font-family: 'Signatoria', cursive;
+  font-size: clamp(2rem, 5vw, 4.8rem);
+  font-weight: normal;
+  line-height: .9;
+  letter-spacing: .02em;
+  text-transform: none;
+  color: var(--seven-red);
+}
+/* Section title: a touch larger so it still reads as the heading. */
+.playlist h2.signature-text { font-size: clamp(3.2rem, 7vw, 5.4rem); line-height: 1; }
+/* Closing tagline of Our Story (on the dark background it stays white for readability). */
+.our-story__copy p.signature-text--tagline { margin-top: 28px; font-size: clamp(2.1rem, 4.2vw, 3.2rem); line-height: 1.05; color: #fff; }
+/* "Find us on": black, a little smaller than a title. */
+.contact__social p.signature-text { font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: 1.1; color: #191919; margin: 0 0 18px; }
+@media (max-width: 767px) {
+  .playlist h2.signature-text { font-size: 3.4rem; }
+  .our-story__copy p.signature-text--tagline { margin-top: 24px; font-size: 2.2rem; }
+}
+
+/* "Find us on": hand-lettered signature artwork (inline SVG, matches the approved design). */
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.contact__social p.contact__find-us { margin: 0 0 16px; line-height: 0; color: #191919; }
+.contact__find-us-art { display: inline-block; height: clamp(48px, 5vw, 64px); width: auto; }
+@media (max-width: 767px) { .contact__find-us-art { height: 50px; } }
+
+/* ------------------------------------------------------------------
+   Cinematic scroll (driven by script.js): sections ease between the
+   active (sharp, full size) and stepped-back (smaller, dimmer, soft) states.
+------------------------------------------------------------------- */
+body.has-cinematic-scroll { background: #fff; }
+body.has-cinematic-scroll .page-shell > section,
+body.has-cinematic-scroll > .site-footer {
+  transform-origin: 50% 50%;
+  transition:
+    transform .55s cubic-bezier(.22, 1, .36, 1),
+    opacity .55s cubic-bezier(.22, 1, .36, 1),
+    filter .55s cubic-bezier(.22, 1, .36, 1),
+    border-radius .55s cubic-bezier(.22, 1, .36, 1);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+body.has-cinematic-scroll .page-shell > section.is-scene-active { z-index: 1; }
+/* The fixed header always stays on top, sharp and readable. */
+#header { isolation: isolate; }
+@media (prefers-reduced-motion: reduce) {
+  body.has-cinematic-scroll .page-shell > section,
+  body.has-cinematic-scroll > .site-footer { transition: opacity .3s linear; will-change: opacity; }
+}
+/* Thin signature "Find us on" (taller artwork, so it needs a little more height to read well). */
+.contact__find-us-art { height: clamp(84px, 7.5vw, 112px); }
+.contact__social p.contact__find-us { margin-bottom: 10px; }
+@media (max-width: 767px) { .contact__find-us-art { height: 84px; } }
+
+/* Anything switched off in the dashboard disappears cleanly. */
+[hidden] { display: none !important; }
+
+/* Location: live Google map inside the existing map frame. The whole map is one
+   link to Google Maps directions (the map itself doesn't capture taps). */
+.location__map--live {
+  display: block;
+  background: #eceeed;
+  background-image: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.location__map--live iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
+}
+.location__map--live::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .04);
+  transition: background-color .3s ease;
+  pointer-events: none;
+}
+@media (hover: hover) { .location__map--live:hover::after { background: rgba(255, 255, 255, .06); } }
+
+/* Best seller cards that link somewhere keep the same look. */
+.best-sellers__link { display: contents; color: inherit; text-decoration: none; }
+/* Product photos on the menu page. */
+.menu-card__media--image { display: flex; align-items: center; justify-content: center; }
+.menu-card__media--image img { width: 100%; height: 100%; max-height: 100%; object-fit: contain; }
+
+/* Hero video = pure background: no controls, no play icon, not tappable. */
+.hero :is(video, .hero__canvas, .hero__poster) { pointer-events: none; }
+.hero video::-webkit-media-controls,
+.hero video::-webkit-media-controls-panel,
+.hero video::-webkit-media-controls-overlay-play-button,
+.hero video::-webkit-media-controls-start-playback-button,
+.hero video::-webkit-media-controls-play-button { display: none !important; -webkit-appearance: none; opacity: 0 !important; }
+.hero video::-internal-media-controls-overlay-cast-button { display: none !important; }
+
+/* ------------------------------------------------------------------
+   Playlist — reference layout: the capsule covers sit in one straight
+   row directly on the white page (no frame, oval, border or background).
+------------------------------------------------------------------- */
+.playlist__carousel { padding: 0; }
+.playlist__carousel::before { content: none; }
+.playlist__glass,
+.playlist__glass:has(.playlist__viewport:focus-visible) {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  overflow: visible;
+}
+.playlist__viewport {
+  -webkit-mask-image: none;
+  mask-image: none;
+  border-radius: 0;
+}
+.playlist__viewport:focus-visible { outline: 3px solid var(--seven-red); outline-offset: 6px; }
+.playlist--no-play .playlist__play { display: none; }
+@media (max-width: 767px) {
+  .playlist__carousel { padding: 0; }
+  .playlist__glass { border-radius: 0; padding: 0; }
+  .playlist__viewport { -webkit-mask-image: none; mask-image: none; }
+}
+/* Reference proportions: a centred strip of equal capsules, cut cleanly at both ends. */
+.playlist__glass { width: min(100% - 2 * var(--page-gutter), 1120px); margin: 0 auto; }
+.playlist__viewport { overflow: hidden; }
+.playlist__rail { gap: clamp(14px, 1.7vw, 24px); padding: 26px 0 34px; }
+.playlist__card { --card-w: clamp(108px, 11vw, 170px); aspect-ratio: 1 / 2; border-radius: 999px; }
+@media (max-width: 767px) {
+  .playlist__glass { width: 100%; }
+  .playlist__rail { gap: 12px; padding: 20px 0 28px; }
+  .playlist__card { --card-w: 27vw; }
+}
+/* "Find us on" lettering: smaller. */
+.contact__find-us-art { height: clamp(58px, 5vw, 76px); }
+.contact__social p.contact__find-us { margin-bottom: 8px; }
+@media (max-width: 767px) { .contact__find-us-art { height: 60px; } }
+/* "Find us on" sized to the reference: about 35% of the CONTACT US heading width. */
+.contact__find-us-art { height: 58px; }
+.contact__social p.contact__find-us { margin-bottom: 10px; }
+@media (max-width: 1023px) { .contact__find-us-art { height: 46px; } }
+@media (max-width: 767px) { .contact__find-us-art { height: 34px; } }
+
+/* Keep native paused-video UI invisible. Reveal only actual playback. */
+.hero .hero__poster { position: absolute; inset: 0; pointer-events: none; }
+.hero .hero__video { position: absolute; inset: 0; opacity: 1; pointer-events: none; }
+.hero.is-video-playing .hero__video { opacity: 1; }
+
+/* Place the clean fallback above the paused video, below existing hero content. */
+.hero .hero__poster { z-index: 1; }
+.hero .hero__video { z-index: 0; }
+.hero .hero-shade, .hero .hero-text { z-index: 2; }
+.hero.is-video-playing .hero__poster { visibility: hidden; }
+
+/* Desktop-only pieces (hero line & button, header links, story photo strip, extra
+   best-seller & location details) never appear on phones or tablets. */
+html:not([data-screen="laptop"]):not([data-screen="desktop"]):not([data-screen="large"]) .wide-only { display: none !important; }
+
+/* ------------------------------------------------------------------
+   Frosted-glass header: soft white glass that blurs whatever scrolls
+   underneath. The glass lives on the header's backing layer (::before),
+   so the logo, links and 3-dot menu stay sharp on top, and the
+   "breathe" animation during menu glides still expands the glass.
+------------------------------------------------------------------- */
+#header { background: transparent; isolation: auto; }
+#header > * { position: relative; z-index: 1; }
+#header::before {
+  z-index: 0;
+  background: rgba(255, 255, 255, .72);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .06);
+}
+/* Browsers without blur support keep the solid white header. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  #header::before { background: #fff; }
+}
+
+/* Clear glass header: no white tint — only blur, with a faint glassy edge. */
+#header::before {
+  background: rgba(255, 255, 255, .04);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .22), 0 1px 0 rgba(0, 0, 0, .05);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  #header::before { background: rgba(255, 255, 255, .92); }
+}
+
+/* ==================================================================
+   HEADER v24 — always visible; transparent at the top, glass on scroll
+   ------------------------------------------------------------------
+   • Top of the homepage: logo, links, BAG and ☰ sit directly on the
+     hero video. No background, blur, border or shadow.
+   • After ~48px of scrolling script.js adds .is-scrolled and the
+     translucent white frosted layer fades in behind the same content.
+   • Back at the top only that layer fades out again.
+   • Colour: .is-light (white content) while the header floats over a
+     dark video frame; dark content on the glass, on light sections
+     and inside the open menu. script.js samples the video to decide.
+================================================================== */
+.page-shell { padding-top: 0; }
+
+#header { opacity: 1; transform: none; pointer-events: auto; }
+
+/* The frosted layer: invisible at the top, fades in on scroll. */
+#header::before {
+  background: rgba(255, 255, 255, .62);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .06), 0 10px 30px -24px rgba(0, 0, 0, .35);
+  opacity: 0;
+  transition: opacity .45s cubic-bezier(.22, 1, .36, 1);
+}
+#header.is-scrolled::before { opacity: 1; }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  #header::before { background: rgba(255, 255, 255, .94); }
+}
+/* Over the open (white) menu the glass simply disappears into the page. */
+body.menu-open #header::before { opacity: 0; }
+
+/* Header colour: one variable drives links, BAG pill and the ☰ bars. */
+#header { --header-ink: #1a1a1a; --header-line: rgba(26, 26, 26, .22); }
+#header.is-light { --header-ink: #fff; --header-line: rgba(255, 255, 255, .55); }
+body.menu-open #header { --header-ink: #1a1a1a; --header-line: rgba(26, 26, 26, .22); }
+#header .header-nav a {
+  color: var(--header-ink);
+  transition: color .35s ease, border-color .35s ease, text-shadow .35s ease;
+}
+#header.is-light:not(.is-scrolled) .header-nav a { text-shadow: 0 1px 10px rgba(0, 0, 0, .35); }
+body.menu-open #header .header-nav a { text-shadow: none; }
+/* Logo: the red SEVEN mark turns white over a dark video (like the reference),
+   and back to brand red on the glass. */
+#logo { transition: filter .35s ease; }
+#header.is-light #logo { filter: brightness(0) invert(1) drop-shadow(0 1px 8px rgba(0, 0, 0, .3)); }
+body.menu-open #header #logo { filter: none; }
+/* Hover / active stay Seven red in every state. */
+#header .header-nav a:hover,
+#header .header-nav a[aria-current] { color: var(--seven-red); }
+#header.is-light:not(.is-scrolled) .header-nav a:hover,
+#header.is-light:not(.is-scrolled) .header-nav a[aria-current] { color: #fff; }
+
+/* Right-hand group: the three-dot menu button at the far right. */
+.header-actions { display: flex; align-items: center; gap: 14px; flex: none; }
+
+/* Menu button: the Seven vertical three-dot menu (phone & desktop) — the only
+   menu button. White while floating over the dark hero video, Seven red once
+   the frosted header appears; the dots fold into a thin red × when open. */
+#menu-button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin-right: -12px;            /* dots sit flush with the page gutter */
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--seven-red);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color .4s ease;
+}
+#header.is-light #menu-button,
+#header.is-over-hero #menu-button { color: #fff; }
+body.menu-open #header #menu-button { color: var(--seven-red); }
+#menu-button::before, #menu-button::after { content: none; }
+#menu-button .dot { display: none; }
+.menu-dots { position: relative; display: block; width: 18px; height: 22px; }
+.menu-dots i {
+  position: absolute; left: 50%; top: 50%;
+  width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%; background: currentColor;
+  transition: transform .35s cubic-bezier(.22, 1, .36, 1), opacity .25s ease;
+}
+.menu-dots i:nth-child(1) { transform: translateY(-7px); }
+.menu-dots i:nth-child(3) { transform: translateY(7px); }
+#header.is-over-hero .menu-dots { filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .35)); }
+body.menu-open #header .menu-dots { filter: none; }
+/* Hover: the dots open up a touch. Press: a small, soft squeeze. */
+@media (hover: hover) {
+  #menu-button:hover .menu-dots i:nth-child(1) { transform: translateY(-8.5px); }
+  #menu-button:hover .menu-dots i:nth-child(3) { transform: translateY(8.5px); }
+}
+#menu-button:active .menu-dots { transform: scale(.88); }
+.menu-dots { transition: transform .15s ease; }
+#menu-button:focus-visible { outline: 2px solid var(--seven-red); outline-offset: 2px; }
+/* Open: the dots gather into the centre and a thin × appears. */
+.menu-dots::before, .menu-dots::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  width: 22px; height: 1.5px; margin: -.75px 0 0 -11px;
+  border-radius: 1px; background: currentColor;
+  opacity: 0; transform: rotate(0deg) scaleX(.2);
+  transition: transform .4s cubic-bezier(.22, 1, .36, 1), opacity .25s ease;
+}
+body.menu-open .menu-dots i { transform: translateY(0) scale(.2); opacity: 0; }
+body.menu-open .menu-dots::before { opacity: 1; transform: rotate(45deg); }
+body.menu-open .menu-dots::after { opacity: 1; transform: rotate(-45deg); }
+/* No "breathe" scaling on the menu button while gliding. */
+#header.is-gliding #menu-button { animation: none; }
+
+/* Full-screen menu slides in smoothly from the right; the page behind stays still. */
+#menu.menu {
+  transform: translate3d(100%, 0, 0);
+  transition: transform .55s cubic-bezier(.22, 1, .36, 1), opacity .35s ease, visibility 0s linear .55s;
+}
+#menu.menu.is-open {
+  transform: none;
+  transition: transform .55s cubic-bezier(.22, 1, .36, 1), opacity .35s ease, visibility 0s;
+}
+html.menu-open, html.menu-open body { overflow: hidden; }
+html.menu-open body { padding-right: var(--scrollbar-gap, 0px); }
+html.menu-open #header { right: var(--scrollbar-gap, 0px); }
+
+/* Mobile & tablet: the simpler layout — logo left, menu button right. */
+@media (max-width: 1023px) {
+  #header { height: var(--header-height); }
+}
+
+/* Hero: starts at the top edge and fills the whole screen (no header gap). */
+.hero { height: 100vh; height: 100svh; }
+
+@media (prefers-reduced-motion: reduce) {
+  #header::before, .menu-dots i, .menu-dots::before, .menu-dots::after, #menu.menu, #menu.menu.is-open { transition: opacity .2s linear; }
+}
+
+/* "EXPLORE MENU": text centred inside the oval on every screen (same size, font and style). */
+.burger-story__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+/* Druk sits a little high in its line box (extra room under the capitals);
+   nudge only the letters down so they're optically centred. Button size unchanged. */
+.burger-story__button-text { display: block; transform: translateY(var(--btn-text-nudge, .05em)); }
+html[data-screen="large"], html[data-screen="tablet"] { --btn-text-nudge: .085em; }
+html[data-screen="laptop"], html[data-screen="desktop"] { --btn-text-nudge: .045em; }
+html[data-screen="mobile"] { --btn-text-nudge: .02em; }
+
+/* Franchise enquiries line: the Contact Us phone, quiet and clickable. */
+.franchise__phone {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  margin: clamp(26px, 3.4vw, 36px) 0 0;
+  font-family: Inter, Arial, sans-serif; font-weight: 300; line-height: 1.2;
+}
+.franchise__phone[hidden] { display: none; }
+.franchise__phone-label { color: #8a8a8a; font-size: clamp(.62rem, 1.4vw, .72rem); letter-spacing: .26em; text-transform: uppercase; }
+.franchise__phone-link {
+  color: #191919; font-size: clamp(.95rem, 1.8vw, 1.08rem); letter-spacing: .08em; text-decoration: none;
+  border-bottom: 1px solid transparent; padding-bottom: 2px; transition: color .2s ease, border-color .2s ease;
+}
+.franchise__phone-link:hover, .franchise__phone-link:focus-visible { color: var(--seven-red); border-bottom-color: currentColor; }
+
+/* The hidden media element never exposes native mobile playback UI. */
+.hero video { display: none !important; }
+.hero .hero__canvas { object-fit: cover; pointer-events: none; }

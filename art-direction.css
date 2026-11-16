@@ -1,0 +1,386 @@
+/* ==========================================================================
+   SEVEN — RESPONSIVE ART DIRECTION  (loaded last, on every page)
+   --------------------------------------------------------------------------
+   Follows the SEVEN Visual Style Guideline:
+     • Ava Red #b71923 · Neutral Gray #414042
+     • Druk Text Super/Heavy → big brand headings only
+     • Inter Light → navigation, menu, labels, buttons, supporting text
+     • Inter Regular → only where small text needs it to stay readable
+     • Signatoria → one small signature detail (Our Story sign-off)
+   Screen types come from screens/screens.js (html[data-screen=…]):
+     mobile < 768 · tablet 768–1023 (+ touch tablets to 1366)
+     laptop 1024–1439 · desktop 1440–1919 · large 1920+
+   Nothing is removed or hidden here — only type, spacing and composition.
+   ========================================================================== */
+
+:root {
+  --ava-red: #b71923;
+  --neutral-gray: #414042;
+  --ink: #191919;
+  --muted: #6d6c6e;
+  --hairline: rgba(25, 25, 25, .12);
+  --track-nav: .24em;       /* tracking for navigation & labels */
+  --track-btn: .2em;        /* tracking for buttons */
+}
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+
+/* --------------------------------------------------------------------------
+   1. TYPOGRAPHY SYSTEM (all screens)
+   -------------------------------------------------------------------------- */
+/* Big brand headings: Druk Text Super (hero) / Heavy (sections). */
+.hero-text h1 { font-family: 'Druk Text', Impact, sans-serif; font-weight: 900; }
+.our-story h2, .burger-story__heading h2, .best-sellers h2, .partners h2, .franchise h2,
+.location h2, .playlist h2, .instagram-feed h2, .contact h2, .menu-page h1 {
+  font-family: 'Druk Text', Impact, sans-serif; font-weight: 800;
+}
+
+/* Supporting text: Inter Light, calm line-height, Neutral Gray on light sections. */
+.burger-story__heading p, .partners__inner > p, .partners p, .franchise__copy, .playlist__copy,
+.contact__lead, .best-sellers__intro-text, .location__address, .menu-page__heading p {
+  font-family: Inter, Arial, sans-serif; font-weight: 300; line-height: 1.6; letter-spacing: 0;
+  color: var(--neutral-gray);
+}
+.contact__lead strong, .playlist__lead, .franchise h3 {
+  font-family: Inter, Arial, sans-serif; font-weight: 400; letter-spacing: -.005em; color: var(--ink);
+}
+.franchise h3 { line-height: 1.3; }
+.playlist__lead { line-height: 1.45; }
+.hero-aside__text { font-weight: 300; letter-spacing: .01em; line-height: 1.5; }
+
+/* Buttons: Inter Light, uppercase, refined tracking (same pill shapes and colours). */
+.burger-story__button, .franchise__button, .instagram-feed__button, .hero-aside__button,
+.best-sellers__button, .location__button, .wide-button {
+  font-family: Inter, Arial, sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 12px !important;
+  letter-spacing: var(--track-btn) !important;
+  line-height: 1.35 !important;
+  text-transform: uppercase;
+}
+.burger-story__button-text { transform: none !important; }
+.burger-story__button, .franchise__button, .instagram-feed__button { transition: background-color .25s ease, color .25s ease; }
+.burger-story__button:hover, .burger-story__button:focus-visible { background: var(--ava-red); }
+
+/* Marquee band: small labels in Inter Light, wide tracking. */
+.brand-marquee__group {
+  font-family: Inter, Arial, sans-serif !important; font-weight: 300 !important;
+  font-size: 11px !important; letter-spacing: .32em !important; color: var(--neutral-gray);
+}
+
+/* Contact details, handle and footer: Inter Light. */
+.contact__details { font-family: Inter, Arial, sans-serif !important; font-weight: 300; letter-spacing: .06em; }
+.contact__details span { color: #b9b9b9; }
+.contact__handle { font-weight: 300; letter-spacing: .04em; }
+.site-footer__nav a, .site-footer__legal a, .site-footer__copyright {
+  font-family: Inter, Arial, sans-serif; font-weight: 300; letter-spacing: .04em;
+}
+.site-footer__nav a { text-transform: uppercase; letter-spacing: var(--track-nav); font-size: 12px; }
+.site-footer__nav { gap: 14px !important; }
+.site-footer__legal a, .site-footer__copyright { font-size: 12px !important; color: #bdbdbd; }
+.site-footer__legal a:hover, .site-footer__nav a:hover { color: #fff; }
+
+/* Small labels on the menu page. */
+.menu-page__back { font-family: Inter, Arial, sans-serif !important; font-weight: 300; font-size: 12px !important; letter-spacing: var(--track-nav); text-transform: uppercase; }
+
+/* --------------------------------------------------------------------------
+   2. HEADER — same logo asset & proportions everywhere, compact and aligned
+   -------------------------------------------------------------------------- */
+.header-logo { display: flex; align-items: center; line-height: 0; }
+#logo { height: auto; aspect-ratio: 273.73 / 34.01; }   /* official horizontal lockup: 25.8X × 3.2X */
+#header .header-nav a { font-family: Inter, Arial, sans-serif; font-weight: 300; letter-spacing: var(--track-nav); }
+
+/* Phones: logo visually small and crisp, safe spacing from the edges. */
+html[data-screen="mobile"] {
+  --header-height: 64px;
+}
+html[data-screen="mobile"] #header {
+  height: var(--header-height);
+  padding: 0 max(20px, env(safe-area-inset-right)) 0 max(20px, env(safe-area-inset-left));
+}
+html[data-screen="mobile"] #logo { width: 118px; }
+html[data-screen="mobile"] #menu-button { width: 44px; height: 44px; margin-right: -13px; }
+
+/* Tablets */
+html[data-screen="tablet"] { --header-height: 76px; }
+html[data-screen="tablet"] #header { height: var(--header-height); padding: 0 40px; }
+html[data-screen="tablet"] #logo { width: 140px; }
+html[data-screen="tablet"] #menu-button { margin-right: -13px; }
+
+/* Laptop / desktop / large: logo left, links centred, three-dot menu right. */
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) #header #menu-button { display: grid; justify-self: end; margin-right: -13px; }
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) #header .header-actions { display: flex; justify-self: end; }
+html:is([data-screen="laptop"], [data-screen="desktop"]) #logo { width: clamp(150px, 10.5vw, 176px); }
+html[data-screen="large"] #logo { width: clamp(176px, 9vw, 210px); }
+html[data-screen="large"] #header .header-nav a { font-size: clamp(.9rem, .62vw, 1.05rem); }
+/* While the menu is open the inline links step aside, so the overlay is calm. */
+body.menu-open #header .header-nav { opacity: 0; pointer-events: none; }
+#header .header-nav { transition: opacity .35s ease; }
+
+/* --------------------------------------------------------------------------
+   3. THREE-DOT MENU OVERLAY — minimal, editorial, Inter Light
+   -------------------------------------------------------------------------- */
+#menu.menu {
+  display: flex !important;
+  flex-direction: column; align-items: stretch; justify-content: center;
+  padding: calc(var(--header-height) + 24px) max(32px, env(safe-area-inset-right)) 48px max(32px, env(safe-area-inset-left)) !important;
+  background: #fff;
+  counter-reset: menu-item;
+}
+#menu ul {
+  width: 100%; max-width: 420px; margin: 0 auto !important; padding: 0;
+  list-style: none; text-align: left;
+  border-top: 1px solid var(--hairline);
+}
+#menu li, #menu li + li, #menu li:last-child { margin: 0 !important; border-bottom: 1px solid var(--hairline); counter-increment: menu-item; }
+#menu a, #menu li:last-child a {
+  position: relative; display: flex !important; align-items: baseline; gap: 22px;
+  width: 100%; padding: 22px 0 !important;
+  border: 0 !important;
+  color: var(--ink);
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 15px !important;
+  letter-spacing: .28em !important;
+  word-spacing: normal !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase;
+  transition: color .25s ease, padding-left .35s cubic-bezier(.22, 1, .36, 1);
+}
+#menu a::before {
+  content: counter(menu-item, decimal-leading-zero);
+  flex: none; width: 22px;
+  color: #a9a9a9; font-size: 10px; letter-spacing: .12em;
+  transition: color .25s ease;
+}
+#menu a:hover, #menu a:focus-visible { color: var(--ava-red); }
+#menu a:hover::before, #menu a:focus-visible::before { color: var(--ava-red); }
+#menu a[aria-current] { color: var(--ava-red); border: 0 !important; }
+#menu a[aria-current]::before { color: var(--ava-red); }
+#menu a:focus-visible { outline: none; }
+/* The menu fades its items in gently once it has slid open. */
+#menu li { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .6s cubic-bezier(.22, 1, .36, 1); }
+#menu.is-open li { opacity: 1; transform: none; }
+#menu.is-open li:nth-child(1) { transition-delay: .12s; }
+#menu.is-open li:nth-child(2) { transition-delay: .17s; }
+#menu.is-open li:nth-child(3) { transition-delay: .22s; }
+#menu.is-open li:nth-child(4) { transition-delay: .27s; }
+#menu.is-open li:nth-child(5) { transition-delay: .32s; }
+#menu.is-open li:nth-child(6) { transition-delay: .37s; }
+#menu.is-open li:nth-child(7) { transition-delay: .42s; }
+#menu.is-open li:nth-child(8) { transition-delay: .47s; }
+@media (prefers-reduced-motion: reduce) { #menu li { opacity: 1; transform: none; transition: none; } }
+html[data-screen="tablet"] #menu ul { max-width: 460px; }
+html[data-screen="tablet"] #menu a { font-size: 16px !important; padding: 26px 0 !important; }
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) #menu ul { max-width: 480px; }
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) #menu a { font-size: 15px !important; padding: 24px 0 !important; }
+html[data-screen="large"] #menu ul { max-width: 560px; }
+html[data-screen="large"] #menu a { font-size: 18px !important; padding: 30px 0 !important; }
+@media (max-height: 560px) { #menu a { padding: 14px 0 !important; } }
+
+/* --------------------------------------------------------------------------
+   4. OUR STORY — controlled reading column + editorial composition
+   -------------------------------------------------------------------------- */
+.our-story__copy { color: rgba(255, 255, 255, .78); font-family: Inter, Arial, sans-serif; font-weight: 300; }
+.our-story__copy p { max-width: 34em; }
+.our-story__copy .our-story__lead { color: #fff; font-weight: 300; }
+.our-story__copy .our-story__signoff {
+  font-family: 'Signatoria', cursive; font-weight: 400; color: #fff;
+  letter-spacing: .01em; line-height: 1.1; text-transform: none;
+}
+
+/* Phones */
+html[data-screen="mobile"] .our-story { padding: 64px 24px 72px !important; }
+html[data-screen="mobile"] .our-story h2 { font-size: clamp(3.4rem, 15vw, 4.3rem); text-align: left; }
+html[data-screen="mobile"] .our-story__copy { margin-top: 28px; font-size: 15px; line-height: 1.68; }
+html[data-screen="mobile"] .our-story__copy p + p { margin-top: 16px !important; }
+html[data-screen="mobile"] .our-story__copy .our-story__lead { font-size: 19px; line-height: 1.45; margin-bottom: 22px; }
+html[data-screen="mobile"] .our-story__copy .our-story__signoff { margin-top: 26px !important; font-size: 30px; }
+
+/* Tablets: heading left, reading column right. */
+html[data-screen="tablet"] .our-story { padding: 96px 48px !important; }
+html[data-screen="tablet"] .our-story__inner {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 48px; align-items: start; max-width: 1040px;
+}
+html[data-screen="tablet"] .our-story h2 { position: sticky; top: calc(var(--header-height) + 32px); font-size: clamp(4.2rem, 9vw, 6.4rem); text-align: left; }
+html[data-screen="tablet"] .our-story__copy { margin-top: 10px; font-size: 16px; line-height: 1.72; }
+html[data-screen="tablet"] .our-story__copy p + p { margin-top: 18px; }
+html[data-screen="tablet"] .our-story__copy .our-story__lead { font-size: 21px; line-height: 1.45; margin-bottom: 26px; }
+html[data-screen="tablet"] .our-story__copy .our-story__signoff { margin-top: 30px; font-size: 34px; }
+
+/* Laptop / desktop / large: composed text block beside the photo strip. */
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .our-story { grid-template-columns: minmax(380px, 38%) minmax(0, 1fr); }
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .our-story__inner { max-width: 560px; }
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .our-story__copy { margin-top: clamp(28px, 2.6vw, 44px); font-size: clamp(15px, 1vw, 17px); line-height: 1.72; }
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .our-story__copy p + p { margin-top: 1em; }
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .our-story__copy .our-story__lead { font-size: clamp(19px, 1.35vw, 24px); line-height: 1.45; margin-bottom: 1.3em; }
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .our-story__copy .our-story__signoff { margin-top: 1.2em; font-size: clamp(30px, 2.2vw, 42px); }
+html[data-screen="large"] .our-story__inner { max-width: 640px; }
+html[data-screen="large"] .our-story__copy { font-size: clamp(17px, .95vw, 20px); }
+
+/* --------------------------------------------------------------------------
+   5. FRANCHISE ENQUIRIES — discreet line with a small phone icon
+   -------------------------------------------------------------------------- */
+.franchise__phone { gap: 10px; }
+.franchise__phone-label { color: #8f8e90; font-weight: 300; font-size: 11px !important; letter-spacing: .3em; }
+.franchise__phone-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--ink); font-weight: 300; letter-spacing: .1em; font-size: 16px !important;
+}
+.franchise__phone-icon { width: 14px; height: 14px; flex: none; fill: none; stroke: var(--ava-red); stroke-width: 1.4; stroke-linejoin: round; }
+html[data-screen="large"] .franchise__phone-link { font-size: 19px !important; }
+html[data-screen="large"] .franchise__phone-icon { width: 16px; height: 16px; }
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVE ART DIRECTION — section by section
+   -------------------------------------------------------------------------- */
+
+/* ---------- Phones (< 768) ---------- */
+html[data-screen="mobile"] {
+  --section-pad-y: 64px;
+  --stack-gap: 30px;
+}
+html[data-screen="mobile"] .hero-text { left: 24px; right: 24px; bottom: max(40px, env(safe-area-inset-bottom)); }
+html[data-screen="mobile"] .brand-marquee__group { font-size: 10px !important; gap: 22px !important; padding-right: 22px !important; }
+html[data-screen="mobile"] .brand-marquee { padding: 16px 0 !important; }
+
+html[data-screen="mobile"] .burger-story__heading { padding-left: 24px; padding-right: 24px; }
+html[data-screen="mobile"] .burger-story__heading p { font-size: 15px; max-width: 330px; margin: 16px auto 26px; }
+html[data-screen="mobile"] .burger-story__button { width: auto !important; min-width: 220px; min-height: 50px; padding: 0 30px !important; }
+
+/* Best seller: a swipeable row of readable cards instead of three tiny columns. */
+html[data-screen="mobile"] .best-sellers__sticky { padding: 64px 0 !important; }
+html[data-screen="mobile"] .best-sellers h2 { padding: 0 24px; }
+html[data-screen="mobile"] .best-sellers__cards {
+  display: flex !important; gap: 14px !important; width: 100% !important;
+  margin-top: 30px !important; padding: 0 24px 6px; overflow-x: auto;
+  scroll-snap-type: x mandatory; scroll-padding: 0 24px; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+html[data-screen="mobile"] .best-sellers__cards::-webkit-scrollbar { display: none; }
+html[data-screen="mobile"] .best-sellers__card {
+  flex: 0 0 68%; scroll-snap-align: start;
+  padding: 22px 16px 24px; background: var(--section-alt-bg); border-radius: 6px;
+}
+html[data-screen="mobile"] .best-sellers__card img { width: 100% !important; aspect-ratio: 4 / 3; object-fit: contain; }
+html[data-screen="mobile"] .best-sellers__card h3 { margin-top: 14px !important; font-size: 22px !important; line-height: 1 !important; letter-spacing: 0 !important; }
+
+html[data-screen="mobile"] :is(.partners, .franchise, .location, .contact) { padding: 64px 24px !important; }
+html[data-screen="mobile"] .partners__inner > p, html[data-screen="mobile"] .franchise__copy { font-size: 15px; max-width: 34em; margin-left: auto; margin-right: auto; }
+html[data-screen="mobile"] .franchise h3 { font-size: 17px; margin-top: 18px; }
+html[data-screen="mobile"] .franchise__button { width: 100%; max-width: 340px; min-height: 54px; padding: 14px 22px !important; }
+html[data-screen="mobile"] .playlist__lead { font-size: 16px; padding: 0 28px; }
+html[data-screen="mobile"] .playlist__copy { font-size: 14px; }
+html[data-screen="mobile"] .instagram-feed { padding-left: 24px; padding-right: 24px; }
+html[data-screen="mobile"] .instagram-feed__button { min-height: 52px; padding: 12px 22px !important; }
+html[data-screen="mobile"] .contact__lead { font-size: 15px; }
+html[data-screen="mobile"] .contact__details { font-size: 15px !important; gap: 12px; }
+html[data-screen="mobile"] .site-footer { padding: 56px 24px max(30px, env(safe-area-inset-bottom)); }
+
+/* ---------- Tablets ---------- */
+html[data-screen="tablet"] {
+  --section-pad-y: 88px;
+  --stack-gap: 40px;
+  --page-gutter: 48px;
+}
+html[data-screen="tablet"] .hero-text { left: 48px; bottom: 56px; }
+html[data-screen="tablet"] .hero-text h1 { font-size: clamp(6rem, 14vw, 9.5rem); line-height: .86; letter-spacing: -.04em; }
+html[data-screen="tablet"] .burger-story__heading p { font-size: 16px; max-width: 440px; }
+html[data-screen="tablet"] .burger-story__button { min-height: 52px; padding: 0 36px !important; min-width: 0; }
+
+html[data-screen="tablet"] .best-sellers__sticky { padding: var(--section-pad-y) 48px !important; }
+html[data-screen="tablet"] .best-sellers__cards { gap: 18px !important; width: 100%; }
+html[data-screen="tablet"] .best-sellers__card { padding: 22px 14px 24px; background: var(--section-alt-bg); border-radius: 6px; }
+html[data-screen="tablet"] .best-sellers__card h3 { font-size: clamp(1.25rem, 2.6vw, 1.7rem); }
+
+/* Partners: text left, logos right. */
+html[data-screen="tablet"] .partners { padding: var(--section-pad-y) 48px !important; }
+html[data-screen="tablet"] .partners__inner {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); grid-template-rows: auto auto;
+  column-gap: 48px; align-items: center; max-width: 1100px; text-align: left;
+}
+html[data-screen="tablet"] .partners h2 { grid-column: 1; grid-row: 1; font-size: clamp(3.6rem, 7.6vw, 5.4rem); }
+html[data-screen="tablet"] .partners__inner > p { grid-column: 1; grid-row: 2; margin: 22px 0 0; font-size: 16px; max-width: 30em; }
+html[data-screen="tablet"] .partners__logos { grid-column: 2; grid-row: 1 / 3; flex-direction: column; gap: 36px !important; margin: 0 !important; }
+html[data-screen="tablet"] .partners__logo, html[data-screen="tablet"] .partners__logo--martins { width: min(26vw, 230px) !important; height: 86px !important; }
+
+/* Franchise: big title left, details right. */
+html[data-screen="tablet"] .franchise { padding: var(--section-pad-y) 48px !important; }
+html[data-screen="tablet"] .franchise__content {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-rows: auto auto auto auto;
+  column-gap: 44px; width: 100%; max-width: 1100px; text-align: left;
+}
+html[data-screen="tablet"] .franchise h2 { grid-column: 1; grid-row: 1 / 5; align-self: center; font-size: clamp(4.4rem, 10vw, 7.2rem); line-height: .84; }
+html[data-screen="tablet"] .franchise h3 { grid-column: 2; grid-row: 1; margin: 0; font-size: 19px; }
+html[data-screen="tablet"] .franchise__copy { grid-column: 2; grid-row: 2; margin: 14px 0 0; font-size: 16px; }
+html[data-screen="tablet"] .franchise__button { grid-column: 2; grid-row: 3; justify-self: start; width: auto; max-width: none; margin: 30px 0 0 !important; min-height: 52px; padding: 0 30px !important; }
+html[data-screen="tablet"] .franchise__phone { grid-column: 2; grid-row: 4; align-items: flex-start; margin-top: 26px; }
+
+html[data-screen="tablet"] .location { padding: var(--section-pad-y) 48px !important; }
+html[data-screen="tablet"] .location__map { width: 100%; max-width: 900px; height: clamp(340px, 46vw, 520px); }
+html[data-screen="tablet"] .playlist__lead { font-size: 18px; }
+html[data-screen="tablet"] .playlist__copy { font-size: 16px; }
+html[data-screen="tablet"] .instagram-feed { padding-left: 48px; padding-right: 48px; }
+
+/* Contact: details left, social right. */
+html[data-screen="tablet"] .contact { padding: var(--section-pad-y) 48px !important; }
+html[data-screen="tablet"] .contact__inner {
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); grid-template-rows: auto auto auto;
+  column-gap: 40px; max-width: 1100px; text-align: left;
+}
+html[data-screen="tablet"] .contact h2 { grid-column: 1; grid-row: 1; }
+html[data-screen="tablet"] .contact__lead { grid-column: 1; grid-row: 2; font-size: 16px; }
+html[data-screen="tablet"] .contact__details { grid-column: 1; grid-row: 3; justify-content: flex-start; font-size: 16px !important; }
+html[data-screen="tablet"] .contact__social { grid-column: 2; grid-row: 1 / 4; align-self: center; margin: 0 !important; text-align: center; }
+html[data-screen="tablet"] .site-footer { padding: 72px 48px 36px; }
+
+/* ---------- Laptop / desktop / large ---------- */
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .burger-story__heading p,
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .partners__inner > p,
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .franchise__copy,
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .best-sellers__intro-text,
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .playlist__copy {
+  font-size: clamp(15px, 1vw, 18px); line-height: 1.65; max-width: 32em;
+}
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .contact__lead { font-size: clamp(16px, 1.05vw, 19px); line-height: 1.6; }
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .contact__details { font-size: clamp(15px, 1vw, 18px) !important; }
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .franchise h3 { font-size: clamp(19px, 1.35vw, 24px); }
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .playlist__lead { font-size: clamp(18px, 1.25vw, 22px); }
+/* Buttons: one consistent height and padding. */
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) :is(.burger-story__button, .franchise__button, .instagram-feed__button, .hero-aside__button, .best-sellers__button, .location__button) {
+  min-height: 52px; padding: 0 34px !important; font-size: 12px !important;
+}
+html[data-screen="large"] :is(.burger-story__button, .franchise__button, .instagram-feed__button, .hero-aside__button, .best-sellers__button, .location__button) {
+  min-height: 60px; padding: 0 42px !important; font-size: 14px !important;
+}
+html[data-screen="large"] .brand-marquee__group { font-size: 13px !important; }
+/* Controlled content widths on very wide screens. */
+html[data-screen="large"] .franchise h2 { font-size: clamp(9rem, 8vw, 13rem); }
+html[data-screen="large"] :is(.burger-story__heading p, .partners__inner > p, .franchise__copy, .best-sellers__intro-text, .playlist__copy) { font-size: clamp(17px, .95vw, 20px); }
+html[data-screen="large"] .contact__lead { font-size: clamp(18px, 1vw, 21px); }
+html[data-screen="large"] .franchise h3 { font-size: clamp(22px, 1.25vw, 27px); }
+html[data-screen="large"] .playlist__lead { font-size: clamp(20px, 1.1vw, 25px); }
+html[data-screen="large"] .site-footer__nav a { font-size: 14px; }
+html[data-screen="large"] :is(.site-footer__legal a, .site-footer__copyright) { font-size: 14px !important; }
+/* The footer logo artwork is small; keep it at a size where it stays sharp. */
+html:is([data-screen="laptop"], [data-screen="desktop"], [data-screen="large"]) .site-footer__logo { width: 112px; }
+
+/* --------------------------------------------------------------------------
+   7. Fine-tuning
+   -------------------------------------------------------------------------- */
+/* Line breaks written for wide screens never split phone/tablet lines. */
+html:is([data-screen="mobile"], [data-screen="tablet"]) .desktop-break { display: none; }
+/* Phone number and email stack neatly on phones and tablets (no stray divider). */
+html:is([data-screen="mobile"], [data-screen="tablet"]) .contact__details { flex-direction: column; gap: 6px !important; }
+html:is([data-screen="mobile"], [data-screen="tablet"]) .contact__details span { display: none; }
+html[data-screen="mobile"] .contact__details { align-items: center; }
+html[data-screen="tablet"] .contact__details { align-items: flex-start; }
+/* Signature sign-off fits on one line on phones. */
+html[data-screen="mobile"] .our-story__copy .our-story__signoff { font-size: 25px; }
+
+/* Official logo files (vector, from the Visual Style Guideline).
+   The footer vector has no built-in padding, so it is sized to the same visible
+   size as before. Clean space of at least ½ the logo height is kept by the layout. */
+.site-footer__logo { width: 82px !important; }
+.site-footer__logo img { width: 100%; height: auto; aspect-ratio: 136.12 / 193.48; }
+html[data-screen="mobile"] .site-footer__logo { width: 64px !important; }
+html[data-screen="large"] .site-footer__logo { width: 96px !important; }
